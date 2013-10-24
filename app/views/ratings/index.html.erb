@@ -13,5 +13,13 @@
         </div>
   		</div>
   	<% end %>
+
+    <div class="row rating-action">
+      <div class="col-md-12">
+        <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
+          <%= submit_tag 'Vote' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
