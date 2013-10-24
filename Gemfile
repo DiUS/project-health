@@ -4,12 +4,9 @@ ruby '2.0.0'
 
 gem 'rails'
 gem 'railties'
-gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
-gem 'turbolinks'
-gem 'bootstrap-sass'
 
 gem 'activerecord'
 gem 'activeresource'
@@ -20,6 +17,11 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'browser'
 gem 'devise'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+gem 'bootstrap-sass-rails'
+gem 'font-awesome-sass-rails'
 
 group :test, :development do
   gem 'rspec'
