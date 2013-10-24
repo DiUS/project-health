@@ -6,6 +6,7 @@ class RatingsController < ApplicationController
   end
 
   def create
-
+    flash[:message] = "Vote submitted"
+    redirect_to project_ratings_path(project_id: params[:project_id])
   end
 end
