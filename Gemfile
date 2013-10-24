@@ -4,9 +4,7 @@ ruby '2.0.0'
 
 gem 'rails'
 gem 'railties'
-gem 'coffee-rails'
 gem 'uglifier'
-gem 'jquery-rails'
 
 gem 'activerecord'
 gem 'activeresource'
@@ -17,6 +15,11 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'browser'
 gem 'devise'
+
+# Use angular as the JavaScript library
+gem 'angularjs-rails'
+gem 'ng-rails-csrf'
+gem 'd3js-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
