@@ -9,6 +9,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'bootstrap-sass'
 
 gem 'activerecord'
 gem 'activeresource'
