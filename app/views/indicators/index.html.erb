@@ -1,0 +1,35 @@
+<h1>Listing indicators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>One label</th>
+      <th>Five label</th>
+      <th>Sort order</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @indicators.each do |indicator| %>
+      <tr>
+        <td><%= indicator.name %></td>
+        <td><%= indicator.description %></td>
+        <td><%= indicator.one_label %></td>
+        <td><%= indicator.five_label %></td>
+        <td><%= indicator.sort_order %></td>
+        <td><%= link_to 'Show', indicator %></td>
+        <td><%= link_to 'Edit', edit_indicator_path(indicator) %></td>
+        <td><%= link_to 'Destroy', indicator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Indicator', new_indicator_path %>
