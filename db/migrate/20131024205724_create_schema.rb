@@ -7,6 +7,7 @@ class CreateSchema < ActiveRecord::Migration
     create_table :iterations do |t|
       t.belongs_to :project
       t.string :name
+      t.string :status
       t.integer :sort_order
     end
 

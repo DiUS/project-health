@@ -9,8 +9,8 @@ ind4 = Indicator.create(name: "Management", category: process, sort_order: 4)
 
 project1 = Project.create(name: "Project Indicator")
 
-iteration1 = Iteration.create(project: project1, name: "Iteration1", sort_order: 1)
-iteration2 = Iteration.create(project: project1, name: "Iteration2", sort_order: 2)
+iteration1 = Iteration.create(project: project1, name: "Iteration1", sort_order: 1, status: 'past')
+iteration2 = Iteration.create(project: project1, name: "Iteration2", sort_order: 2, status: 'current')
 
 Rating.create(iteration: iteration1, indicator: ind1, score: 2)
 Rating.create(iteration: iteration1, indicator: ind1, score: 3)

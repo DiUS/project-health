@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20131024205724) do
   create_table "iterations", force: true do |t|
     t.integer "project_id"
     t.string  "name"
+    t.string  "status"
     t.integer "sort_order"
   end
 

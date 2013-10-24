@@ -4,8 +4,7 @@ ProjectWealth::Application.routes.draw do
   resources :indicators
 
   resources :projects do
-    resources :iterations do
-      resources :ratings, only: [:index, :create]
-    end
+    resources :iterations
+    resources :ratings, only: [:index, :create]
   end
 end
