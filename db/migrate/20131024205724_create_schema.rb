@@ -11,7 +11,7 @@ class CreateSchema < ActiveRecord::Migration
       t.integer :sort_order
     end
 
-    add_foreign_key(:iterations, :project)
+    add_foreign_key(:iterations, :projects)
     add_index(:iterations, :project_id)
 
     create_table :categories do |t|
@@ -27,7 +27,7 @@ class CreateSchema < ActiveRecord::Migration
       t.integer :sort_order
     end
 
-    add_foreign_key(:indicators, :category)
+    add_foreign_key(:indicators, :categories)
     add_index(:indicators, :category_id)
 
     create_table :ratings do |t|
@@ -36,8 +36,8 @@ class CreateSchema < ActiveRecord::Migration
       t.integer :score
     end
 
-    add_foreign_key(:ratings, :iteration)
-    add_foreign_key(:ratings, :indicator)
+    add_foreign_key(:ratings, :iterations)
+    add_foreign_key(:ratings, :indicators)
     add_index(:ratings, :iteration_id)
     add_index(:ratings, :indicator_id)
 
@@ -47,8 +47,8 @@ class CreateSchema < ActiveRecord::Migration
       t.integer :score
     end
 
-    add_foreign_key(:comments, :iteration)
-    add_foreign_key(:comments, :indicator)
+    add_foreign_key(:comments, :iterations)
+    add_foreign_key(:comments, :indicators)
     add_index(:comments, :iteration_id)
     add_index(:comments, :indicator_id)
   end

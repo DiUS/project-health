@@ -5,22 +5,28 @@
     </div>
   </div>
 
-	<% @indicators.each do |indicator| %>
-		<div class="row">
-      <div class="col-md-6">
-        <%= indicator.name %>
-      </div>
-      <div class="col-md-12">
-        Vote here
-      </div>
-		</div>
-	<% end %>
-
-  <div class="row rating-action">
-    <div class="col-md-12">
-      <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
-        <%= submit_tag 'Vote' %>
-      <% end %>
+  <% if flash[:message] %>
+    <div class="row">
+      <div class="alert alert-success"><%= flash[:message] %></div>
     </div>
-  </div>
+  <% end %>
+
+  <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
+  	<% @indicators.each do |indicator| %>
+  		<div class="row">
+        <div class="col-md-6">
+          <%= indicator.name %>
+        </div>
+        <div class="col-md-12">
+          <%= text_field_tag "scores[#{indicator.id}]" %>
+        </div>
+  		</div>
+  	<% end %>
+
+    <div class="row rating-action">
+      <div class="col-md-12">
+        <%= submit_tag 'Vote' %>
+      </div>
+    </div>
+  <% end %>
 </div>
