@@ -27,6 +27,10 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass-rails'
 gem 'font-awesome-sass-rails'
 
+group :production do
+  gem 'pg', '0.12.2'
+end
+
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
