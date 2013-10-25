@@ -2,26 +2,50 @@
   @extend .container;
 
   .indicators {
-    @extend .list-group;
 
     .indicator {
-      @extend .list-group-item;
       @extend .col-md-7;
       padding: 0;
       margin: 5px 0;
-      background-color: $blue5;
+      background-color: $blue3;
       font: 24px bold;
       line-height: 24px;
 
+      &.good {
+        background-color: $blue3;
+      }
+
+      &.bad {
+        background-color: $blue3;
+      }
+
       .title {
+        @extend .col-md-3;
+        position: relative;
+        float: left;
+        margin: 0;
         padding: 10px 15px;
-        @extend .list-group-item-heading;
+        background-color: $blue5;
+
+        &:after {
+          content: ' ';
+          position: absolute;
+          left: 100%;
+          width: 0; 
+          height: 0;
+          font-size: 0;
+          line-height: 0;
+          top: 0;
+          border-bottom: 22px solid transparent;  
+          border-top: 22px solid transparent; 
+          border-left: 22px solid $blue5; 
+        }
       }
 
       .mean {
         padding: 10px 15px;
-        background-color: $blue3;
         color: white;
+        text-shadow: 1px 1px #333;
         float: right
       }
     }
