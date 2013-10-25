@@ -2,11 +2,13 @@ class RatingsController < ApplicationController
   def index
     @indicators = Indicator.find(:all, :order => "sort_order")
     @project = Project.find(params[:project_id])
-    @span = Span.where(project: @project).where(status: 'current').first
+    @span = @project.spans.current
   end
 
   def create
-    span = Span.where(project_id: params[:project_id]).where(status: 'current').first
+    project = Project.find(params[:project_id])
+    span = project.spans.current
+    
     indicators = Indicator.find(:all)
     indicators.each do |indicator|
       score = params[:scores]["#{indicator.id}"]

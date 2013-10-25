@@ -18,15 +18,15 @@ div#rating {
 	.indicator {
 	  @extend .col-md-12;
     padding: 15px 15px;
-    background: #A0A0A0;
     border: 1px solid #606060;
 
 	  .name {
 	    @extend .col-md-12;
 
       .indicator-name {
-        font-size: 1.1em;
+        font-size: 1.2em;
         font-weight: bold;
+        color: #F0F0F0;
       }
 
       .comment-button {
@@ -37,23 +37,25 @@ div#rating {
     .score {
       @extend .col-md-12;
 
-      span {
+      .indicator-excluded, .indicator-slider {
         float: left;
+         height: 40px;
+        line-height: 40px;
       }
 
-      span.indicator-excluded {
+      .indicator-excluded {
         width: 70px;
       }
 
-      span.indicator-slider {
-        min-width: 185px;
+      .indicator-slider input{
+        width: 240px;
       }
 
-      div.slider-track {
+      .slider-track {
         height: 20px;
       }
 
-      div.slider-handle {
+      .slider-handle {
         height: 30px;
       }
     }
