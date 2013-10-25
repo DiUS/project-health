@@ -1,7 +1,7 @@
 <div id="rating">
   <div class="row">
     <div class="rating-header">
-      Ratings for <%= @iteration.name %>
+      Ratings for <%= @span.name %>
     </div>
   </div>
 
@@ -21,8 +21,8 @@
           </button>
         </div>
         <div class="row score">
-          <span class="indicator-excluded">Not voting</span>
-          <span class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></span>
+          <div class="indicator-excluded">Not voting</div>
+          <div class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
         </div>
 
         <div class="modal fade" id="comment-<%= indicator.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -86,15 +86,20 @@
                   indicator.css('background', colour);
                 });
 
+    var previousComment = '';
+    $('.comment-button').on('click', function(e) {
+      var indicator = $(this).closest('div[class*="indicator"]');
+      previousComment = indicator.find('.indicator-comment').val();
+    });
     $('.cancel-comment').on('click', function(e) {
       e.preventDefault();
-      var indicator = $(this).parents('div[class*="indicator"]');
-      indicator.find('.indicator-comment').val('');
+      var indicator = $(this).closest('div[class*="indicator"]');
+      indicator.find('.indicator-comment').val(previousComment);
       indicator.children('.modal').modal('hide'); 
     });
     $('.save-comment').on('click', function(e) {
       e.preventDefault();
-      var indicator = $(this).parents('div[class*="indicator"]');
+      var indicator = $(this).closest('div[class*="indicator"]');
       indicator.children('.modal').modal('hide'); 
     });
   });
