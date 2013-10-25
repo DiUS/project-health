@@ -44,7 +44,7 @@ class CreateSchema < ActiveRecord::Migration
     create_table :comments do |t|
       t.belongs_to :iteration
       t.belongs_to :indicator
-      t.integer :score
+      t.text :comment
     end
 
     add_foreign_key(:comments, :iterations)

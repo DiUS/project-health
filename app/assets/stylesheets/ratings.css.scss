@@ -20,6 +20,11 @@ div#rating {
 
 	  .name {
 	    @extend .col-md-6;
+
+      .indicator-name {
+        font-size: 1.1em;
+        font-weight: bold;
+      }
 	  }
 
     .score {

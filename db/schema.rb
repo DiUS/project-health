@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20131024205724) do
   create_table "comments", force: true do |t|
     t.integer "iteration_id"
     t.integer "indicator_id"
-    t.integer "score"
+    t.text    "comment"
   end
 
   add_index "comments", ["indicator_id"], name: "index_comments_on_indicator_id", using: :btree
