@@ -1,7 +1,7 @@
 <div id="rating">
   <div class="row">
     <div class="rating-header">
-      <%= @span.name %>
+     Ratings for  <%= @span.name %>
     </div>
   </div>
 
@@ -13,16 +13,16 @@
 
   <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
   	<% @indicators.each do |indicator| %>
-  		<div class="row indicator">
-        <div class="name">
+  		<div class="indicator">
+        <div class="row name">
           <span class="indicator-name"><%= indicator.name %></span>
-        </div>
-        <div class="score">
-          <span class="indicator-excluded">Not voting</span>
-          <span class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></span>
-          <button type="button" class="btn" data-toggle="modal" data-target="#comment-<%= indicator.id %>">
+          <button type="button" class="btn comment-button" data-toggle="modal" data-target="#comment-<%= indicator.id %>">
             <i class="fa fa-comment"></i>
           </button>
+        </div>
+        <div class="row score">
+          <span class="indicator-excluded">Not voting</span>
+          <span class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></span>
         </div>
 
         <div class="modal fade" id="comment-<%= indicator.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,6 +45,8 @@
 
   		</div>
   	<% end %>
+
+    <div class="row">&nbsp;</div>
 
     <div class="row">
       <div class="rating-action">
