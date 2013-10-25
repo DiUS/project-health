@@ -18,15 +18,15 @@ div#rating {
 	.indicator {
 	  @extend .col-md-12;
     padding: 15px 15px;
-    background: #A0A0A0;
     border: 1px solid #606060;
 
 	  .name {
 	    @extend .col-md-12;
 
       .indicator-name {
-        font-size: 1.1em;
+        font-size: 1.2em;
         font-weight: bold;
+        color: #F0F0F0;
       }
 
       .comment-button {
@@ -39,6 +39,8 @@ div#rating {
 
       div {
         float: left;
+         height: 40px;
+        line-height: 40px;
       }
 
       .indicator-excluded {

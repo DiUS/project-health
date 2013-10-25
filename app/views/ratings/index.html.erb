@@ -13,7 +13,7 @@
 
   <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
   	<% @indicators.each do |indicator| %>
-  		<div class="indicator">
+  		<div class="indicator unrated">
         <div class="row name">
           <span class="indicator-name"><%= indicator.name %></span>
           <button type="button" class="btn comment-button" data-toggle="modal" data-target="#comment-<%= indicator.id %>">
@@ -21,7 +21,7 @@
           </button>
         </div>
         <div class="row score">
-          <div class="indicator-excluded">Not voting</div>
+          <div class="indicator-excluded">No vote</div>
           <div class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
         </div>
 
@@ -58,42 +58,37 @@
 
 <script>
   $(function() {
-    $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 0.5, 'tooltip': 'hide'})
+    $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 1, 'tooltip': 'hide'})
                 .on('slide', function(ev) {
                   var value = ev.value;
-                  var colour = "#A0A0A0";
-                  
+                  var cssClass = "indicator ";
+
                   switch(value) {
-                    case 0: colour = "#A0A0A0"; break;
-                    case 0.5: colour = "#A62500"; break;
-                    case 1: colour = "#FF6B40"; break;
-                    case 1.5: colour = "#FF9273"; break;
-                    case 2: colour = "#FFB292"; break;
-                    case 2.5: colour = "#FFEE77"; break;
-                    case 3: colour = "#666633"; break;
-                    case 3.5: colour = "#92FFB2"; break;
-                    case 4: colour = "#95EE6B"; break;
-                    case 4.5: colour = "#75EE3B"; break;
-                    case 5: colour = "#2E8F00"; break;
+                    case 0: cssClass += "unrated"; break;
+                    case 1: cssClass += "deathly"; break;
+                    case 2: cssClass += "ill"; break;
+                    case 3: cssClass += "fine"; break;
+                    case 4: cssClass += "good"; break;
+                    case 5: cssClass += "healthy"; break;
                   }
-                  var indicator = $(this).parents('div[class*="indicator"]');
+                  var indicator = $(this).closest('div[class^="indicator "]');
                   if(value == 0) {
                     indicator.children('.score').children('.indicator-excluded').html('Not voting');
                   } else {
                     indicator.children('.score').children('.indicator-excluded').html('&nbsp;');
                   }
 
-                  indicator.css('background', colour);
+                  indicator.attr('class', cssClass);
                 });
 
     var previousComment = '';
     $('.comment-button').on('click', function(e) {
-      var indicator = $(this).closest('div[class*="indicator"]');
+      var indicator = $(this).closest('div[class^="indicator "]');
       previousComment = indicator.find('.indicator-comment').val();
     });
     $('.cancel-comment').on('click', function(e) {
       e.preventDefault();
-      var indicator = $(this).closest('div[class*="indicator"]');
+      var indicator = $(this).closest('div[class^="indicator "]');
       indicator.find('.indicator-comment').val(previousComment);
       indicator.children('.modal').modal('hide'); 
     });

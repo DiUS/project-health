@@ -18,12 +18,14 @@ $green3: #2F8F00;
 $green4: #75EE3B;
 $green5: #95EE6B;
 
+$unrated: #AAAAAA; 
 $deathly: #240000; 
 $ill: #58238C; 
 $fine: $blue3; 
 $good: #003F1D; 
 $healthy: $green3; 
 
+.unrated {  background-color: $unrated; }
 .deathly {  background-color: $deathly; }
 .ill {  background-color: $ill; }
 .fine {  background-color: $fine; }
