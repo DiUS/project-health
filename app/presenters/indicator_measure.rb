@@ -17,11 +17,11 @@ class IndicatorMeasure
   end
 
   def self.for_project(project)
-    indicators = Indicator.includes(:ratings)
+    indicators = Indicator.all
     indicators.map do |indicator|
       new( 
         name: indicator.name,
-        ratings: indicator.ratings)
+        ratings: indicator.ratings.on_project(project) )
     end
   end
 
