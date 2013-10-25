@@ -7,10 +7,10 @@
       @extend .col-sm-5;
       @extend .col-md-4;
       @extend .col-lg-3;
+      @include unrated;
 
       padding: 0;
       margin: 5px;
-      background-color: $medium;
       font: 24px bold;
       line-height: 24px;
       z-index: -2;
@@ -33,9 +33,7 @@
       }
 
       .mean {
-        @include shadow;
         padding: 10px 15px;
-        color: white;
         float: right
       }
     }
