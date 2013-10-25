@@ -37,7 +37,7 @@ div#rating {
     .score {
       @extend .col-md-12;
 
-      div {
+      .indicator-excluded, .indicator-slider {
         float: left;
          height: 40px;
         line-height: 40px;
