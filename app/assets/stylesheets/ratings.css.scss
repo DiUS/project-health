@@ -10,6 +10,9 @@ div#rating {
   	font-weight: bold;
     font-size: 1.2em;
     padding: 20px 15px;
+    text-align: center;
+    background: #5DC8CD;
+    color: #006064;
   }
 
 	.indicator {
@@ -19,26 +22,39 @@ div#rating {
     border: 1px solid #606060;
 
 	  .name {
-	    @extend .col-md-6;
+	    @extend .col-md-12;
 
       .indicator-name {
         font-size: 1.1em;
         font-weight: bold;
       }
+
+      .comment-button {
+        float: right;
+      }
 	  }
 
     .score {
-      @extend .col-md-6;
+      @extend .col-md-12;
 
       span {
         float: left;
       }
 
       span.indicator-excluded {
-        width: 120px;
+        width: 70px;
       }
+
       span.indicator-slider {
-        min-width: 240px;
+        min-width: 185px;
+      }
+
+      div.slider-track {
+        height: 20px;
+      }
+
+      div.slider-handle {
+        height: 30px;
       }
     }
 	}
