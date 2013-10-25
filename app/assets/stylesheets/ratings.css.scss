@@ -13,6 +13,7 @@ div#rating {
 
 	.indicator {
 	  @extend .col-md-12;
+    background: rgb(220, 220, 220);
 
 	  .name {
 	    @extend .col-md-6;

@@ -18,7 +18,8 @@
           <%= indicator.name %>
         </div>
         <div class="score">
-          <%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %>
+          <div></div>
+          <div><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
         </div>
   		</div>
   	<% end %>
@@ -32,5 +33,22 @@
 </div>
 
 <script>
-  $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 0.5, 'tooltip': 'hide'});
+  $(function() {
+    $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 0.5, 'tooltip': 'hide'})
+                .on('slide', function(ev) {
+                  var value = ev.value;
+                  console.log("VALUE: "+value);
+                  var r = 220;
+                  var g = 220;
+                  var b = 220;
+                  
+                  if(value > 0) {
+                    var r = 255 - (value * 51);
+                    var g = (value * 51);
+                    var b = 128;
+                  }
+                  var indicator = $(this).parents('div[class*="indicator"]');
+                  indicator.css('background', 'rgb('+r+','+g+','+b+')');
+                });
+  });
 </script>
