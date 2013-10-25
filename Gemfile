@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'browser'
 gem 'devise'
+gem 'jquery-rails'
 
 # Use angular as the JavaScript library
 gem 'angularjs-rails'
