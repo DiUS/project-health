@@ -1,0 +1,31 @@
+<h1>Listing iterations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Sort order</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @iterations.each do |iteration| %>
+      <tr>
+        <td><%= iteration.name %></td>
+        <td><%= iteration.status %></td>
+        <td><%= iteration.sort_order %></td>
+        <td><%= link_to 'Show', iteration %></td>
+        <td><%= link_to 'Edit', edit_iteration_path(iteration) %></td>
+        <td><%= link_to 'Destroy', iteration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Iteration', new_iteration_path %>

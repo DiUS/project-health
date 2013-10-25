@@ -1,4 +1,9 @@
 ProjectWealth::Application.routes.draw do
+
+  resources :iterations
+
+  resources :projects
+
   resources :categories
 
   get "dashboard/index"

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @iteration.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @iteration.status %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @iteration.sort_order %>
+</p>
+
+<%= link_to 'Edit', edit_iteration_path(@iteration) %> |
+<%= link_to 'Back', iterations_path %>
