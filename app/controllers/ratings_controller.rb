@@ -10,6 +10,7 @@ class RatingsController < ApplicationController
     indicators = Indicator.find(:all)
     indicators.each do |indicator|
       score = params[:scores]["#{indicator.id}"]
+      score = nil if score == "0"
       Rating.create(iteration: iteration, indicator: indicator, score: score)
     end
 
