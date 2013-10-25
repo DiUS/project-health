@@ -1,25 +1,22 @@
 
 <div class="container">
 <h2>Project Dashboard</h2>
-<p id="notice"><%= notice %></p>
+<h3>Project Details</h3>
 
 <div class="row span12">
   <strong>Name:</strong>   <%= @project.name %>
-
 </div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-
+<%= link_to 'Edit', edit_project_path(@project) %> 
 
 <h3>Spans</h3>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
-      <th>To</th>
       <th>From</th>
+      <th>To</th>
       <th></th>
       <th></th>
     </tr>
@@ -30,7 +27,7 @@
       <tr>
         <td><%= span.name %></td>
         <td><%= span.determine_start_of_span %></td>
-        <td><%= span.created_date %></td>
+        <td><%= span.created_at.strftime('%e-%m-%y %H:%M') %></td>
       </tr>
     <% end %>
   </tbody>
@@ -51,4 +48,7 @@
   <% end %>
 
 
+<%= link_to 'Back', projects_path %>
 </div>
+
+

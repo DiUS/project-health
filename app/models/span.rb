@@ -3,7 +3,7 @@ class Span < ActiveRecord::Base
 
 
 	def determine_start_of_span
-    	required_spans = Span.where('created_at < ?',created_at).order("created_at")
+    	required_spans = Span.where('created_at < ? and project_id = ?',created_at,project.id).order("created_at Desc")
     	if required_spans == 0 || required_spans.empty?
     		"start of project"
     	else

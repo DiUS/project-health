@@ -9,8 +9,8 @@ ind4 = Indicator.create(name: "Management", category: process, sort_order: 4)
 
 project1 = Project.create(name: "Project Indicator")
 
-span1 = Span.create(project: project1, name: "Span1", status: 'past')
-span2 = Span.create(project: project1, name: "Span2", status: 'current')
+span1 = Span.create(project: project1, name: "Span1", status: 'past',created_at: Time.now)
+span2 = Span.create(project: project1, name: "Span2", status: 'current',created_at: Time.now)
 
 Rating.create(span: span1, indicator: ind1, score: 2)
 Rating.create(span: span1, indicator: ind1, score: 3)

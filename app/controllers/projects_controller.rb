@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @spans = Span.where(project_id: @project.id)
+    @spans = Span.where(project_id: @project.id).order("created_at desc")
     @span = Span.new
   end
 
