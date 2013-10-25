@@ -1,13 +1,15 @@
 
 <div class="container">
 <h2>Project Dashboard</h2>
+<div class="well">
 <h3>Project Details</h3>
 
-<div class="row span12">
+<div class="row span12 row col-md-offset-1">
   <strong>Name:</strong>   <%= @project.name %>
 </div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> 
+</div>
 
 <div class="well">
 <h3>Spans</h3>
@@ -36,18 +38,17 @@
 
 
 
-      <div class="row offset2">
-  <%= form_for([@project,@span], :html => { class: "form-inline" }) do |f| %>
+      <div class="row col-md-offset-1">
+  <%= form_for([@project,@span], :html => { class: "form-inlixcdne" }) do |f| %>
           <%= f.label :name %>
           <%= f.text_field :name %>
-          <%= f.submit "Activate", class: "btn btn-large btn-primary" %>
+          <%= f.submit "Activate Span", class: "btn btn-large btn-primary" %>
 
 
   <% end %>
         </div>
-<div>
 
-<%= link_to 'Back', projects_path %>
 </div>
+<%= link_to 'Back', projects_path %>
 
 
