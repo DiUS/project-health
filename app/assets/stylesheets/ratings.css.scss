@@ -2,19 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-[class*="col-"] {
-  background-color: rgba(86, 61, 124, 0.15);
-  border: 1px solid rgba(86, 61, 124, 0.2);
-  padding-bottom: 15px;
-  padding-top: 15px;
-}
-
 div#rating {
-	
-}
+  @extend .container;
 
-div.rating-header {
-  font-weight: bold;
-  font-size: 1.2em;
+  .rating-header {
+  	@extend .col-md-12;
+  	font-weight: bold;
+    font-size: 1.2em;
+  }
+
+	.indicator {
+	  @extend .col-md-12;
+
+	  .name {
+	    @extend .col-md-6;
+	  }
+
+    .score {
+      @extend .col-md-6;
+    }
+	}
+
+  .row rating-action {
+    @extend .col-md-12;
+  }
 }
