@@ -1,4 +1,6 @@
 ProjectWealth::Application.routes.draw do
+  resources :categories
+
   get "dashboard/index"
   root 'application#index'
 
