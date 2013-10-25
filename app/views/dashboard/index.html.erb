@@ -1,0 +1,11 @@
+<div class="dashboard">
+  <h1><%= @project.name %></h1>
+  <div class="indicators">
+    <% @indicators.each do |indicator| %>
+      <div class='indicator'>
+        <h4 class="title"><%= indicator.name %></h4>
+      </div>
+    <% end %>
+  </div>
+</div>
+

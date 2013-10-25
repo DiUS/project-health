@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if browser.tablet? || browser.mobile?
       redirect_to project_ratings_path(project_id: project.id)
     else
-      redirect_to project_ratings_path(project_id: project.id)
+      redirect_to project_dashboard_index_path(project_id: project.id)
     end
   end
 end

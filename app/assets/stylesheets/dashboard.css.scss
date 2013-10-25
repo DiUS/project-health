@@ -1,0 +1,17 @@
+.dashboard {
+  @extend .container;
+
+  .indicators {
+    @extend .list-group;
+
+    .indicator {
+      @extend .list-group-item;
+      @extend .col-md-7;
+      margin: 5px;
+
+      .title {
+        @extend .list-group-item-heading;
+      }
+    }
+  }
+}
