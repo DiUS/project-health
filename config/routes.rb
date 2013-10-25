@@ -1,6 +1,6 @@
 ProjectWealth::Application.routes.draw do
 
-  resources :iterations
+  resources :spans
 
   resources :projects
 
@@ -12,7 +12,7 @@ ProjectWealth::Application.routes.draw do
   resources :indicators
 
   resources :projects do
-    resources :iterations
+    resources :spans
     resources :dashboard, only: [:index]
     resources :ratings, only: [:index, :create]
   end

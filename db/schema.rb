@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20131024205724) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer "iteration_id"
+    t.integer "span_id"
     t.integer "indicator_id"
     t.text    "comment"
   end
 
-  add_index "comments", ["indicator_id"], name: "index_comments_on_indicator_id", using: :btree
-  add_index "comments", ["iteration_id"], name: "index_comments_on_iteration_id", using: :btree
+  add_index "comments", ["indicator_id"], name: "index_comments_on_indicator_id"
+  add_index "comments", ["span_id"], name: "index_comments_on_span_id"
 
   create_table "indicators", force: true do |t|
     t.integer "category_id"
@@ -35,38 +35,28 @@ ActiveRecord::Schema.define(version: 20131024205724) do
     t.integer "sort_order"
   end
 
-  add_index "indicators", ["category_id"], name: "index_indicators_on_category_id", using: :btree
+  add_index "indicators", ["category_id"], name: "index_indicators_on_category_id"
 
-  create_table "iterations", force: true do |t|
+  create_table "spans", force: true do |t|
+    t.datetime "created_at",      :null => false
     t.integer "project_id"
     t.string  "name"
     t.string  "status"
-    t.integer "sort_order"
   end
 
-  add_index "iterations", ["project_id"], name: "index_iterations_on_project_id", using: :btree
+  add_index "spans", ["project_id"], name: "index_spans_on_project_id"
 
   create_table "projects", force: true do |t|
     t.string "name"
   end
 
   create_table "ratings", force: true do |t|
-    t.integer "iteration_id"
+    t.integer "span_id"
     t.integer "indicator_id"
     t.integer "score"
   end
 
-  add_index "ratings", ["indicator_id"], name: "index_ratings_on_indicator_id", using: :btree
-  add_index "ratings", ["iteration_id"], name: "index_ratings_on_iteration_id", using: :btree
-
-  add_foreign_key "comments", "indicators", name: "comments_indicator_id_fk"
-  add_foreign_key "comments", "iterations", name: "comments_iteration_id_fk"
-
-  add_foreign_key "indicators", "categories", name: "indicators_category_id_fk"
-
-  add_foreign_key "iterations", "projects", name: "iterations_project_id_fk"
-
-  add_foreign_key "ratings", "indicators", name: "ratings_indicator_id_fk"
-  add_foreign_key "ratings", "iterations", name: "ratings_iteration_id_fk"
+  add_index "ratings", ["indicator_id"], name: "index_ratings_on_indicator_id"
+  add_index "ratings", ["span_id"], name: "index_ratings_on_span_id"
 
 end

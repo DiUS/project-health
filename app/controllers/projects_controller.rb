@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @iteration = Iteration.new
+    @span = Span.new
   end
 
   # GET /projects/new

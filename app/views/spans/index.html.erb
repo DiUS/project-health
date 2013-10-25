@@ -1,0 +1,30 @@
+<h1>Listing span</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Sort order</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @span.each do |span| %>
+      <tr>
+        <td><%= span.name %></td>
+        <td><%= span.status %></td>
+        <td><%= link_to 'Show', span %></td>
+        <td><%= link_to 'Edit', edit_span_path(span) %></td>
+        <td><%= link_to 'Destroy', span, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Iteration', new_span_path %>
