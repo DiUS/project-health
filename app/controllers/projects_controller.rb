@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @iteration = Iteration.new
   end
 
   # GET /projects/new

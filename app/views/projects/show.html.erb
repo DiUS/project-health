@@ -6,16 +6,20 @@
 </p>
 
 
-<div id="load_audit">
-  <%= form_tag(project_iterations_path(@project), :method => "post") do %>
+
+<div>
+
+
+
+  <%= form_for([@project,@iteration]) do |f| %>
       <div class="row">
         <div class="span2">
-          <%= label_tag(:span_name, "Span name") %>
-          <%= text_field_tag(:span_name) %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
         </div>
       </div>
       <div class="span2 offset9">
-          <%= submit_tag("Create Span", id: "load_for_audit", :class => "btn btn-primary btn-bold btn-large span2") %>
+      	  <%= f.submit "Create Span", class: "btn btn-large btn-primary" %>
       </div>
   <% end %>
 </div>
