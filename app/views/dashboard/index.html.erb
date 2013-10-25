@@ -1,11 +1,14 @@
 <div class="dashboard">
   <h1><%= @project.name %></h1>
+
   <div class="indicators">
-    <% @indicators.each do |indicator| %>
+    <% @indicator_measures.each do | measure | %>
       <div class='indicator'>
-        <h4 class="title"><%= indicator.name %></h4>
+        <span class="title"><%= measure.name %></span>
+        <span class="mean"><%= '%.2f' % measure.mean %></span>
       </div>
     <% end %>
   </div>
+
 </div>
 

@@ -7,11 +7,22 @@
     .indicator {
       @extend .list-group-item;
       @extend .col-md-7;
-      margin: 5px;
+      padding: 0;
+      margin: 5px 0;
       background-color: $blue5;
+      font: 24px bold;
+      line-height: 24px;
 
       .title {
+        padding: 10px 15px;
         @extend .list-group-item-heading;
+      }
+
+      .mean {
+        padding: 10px 15px;
+        background-color: $blue3;
+        color: white;
+        float: right
       }
     }
   }
