@@ -12,6 +12,10 @@ class IndicatorMeasure
     @mean ||= calculate_mean @ratings.map(&:score)
   end
 
+  def health
+    @health ||= calculate_health(mean)
+  end
+
   def self.for_project(project)
     indicators = Indicator.includes(:ratings)
     indicators.map do |indicator|
@@ -26,6 +30,14 @@ class IndicatorMeasure
   def calculate_mean(values)
     values.delete_if(&:nil?)
     values.inject(:+).to_f / values.count 
+  end
+  
+  def calculate_health(value)
+    return 'deathly' if value <= 1
+    return 'ill' if value <= 2
+    return 'fine' if value < 3
+    return 'good' if value < 4
+    'healthy'
   end
 
 end

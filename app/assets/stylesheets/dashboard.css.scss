@@ -16,13 +16,11 @@
       z-index: -2;
 
 
-      &.good {
-        background-color: $blue3;
-      }
-
-      &.bad {
-        background-color: $blue3;
-      }
+      &.deathly {  background-color: $deathly; }
+      &.ill {  background-color: $ill; }
+      &.fine {  background-color: $fine; }
+      &.good {  background-color: $good; }
+      &.healthy {  background-color: $healthy; }
 
       .title {
         @include right-arrow(22px, $blue5);

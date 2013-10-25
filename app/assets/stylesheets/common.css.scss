@@ -1,21 +1,4 @@
-@mixin right-arrow($size, $color) {
-  position: relative;
 
-  &:after {
-    content: ' ';
-    position: absolute;
-    left: 100%;
-    width: 0; 
-    height: 0;
-    font-size: 0;
-    line-height: 0;
-    top: 0;
-    border-bottom: $size solid transparent;  
-    border-top: $size solid transparent; 
-    border-left: $size solid $color; 
-    z-index: -1;
-  }
-}
 
 $red1: #FF3900;
 $red2: #BF5030;
@@ -34,3 +17,34 @@ $green2: #52A529;
 $green3: #2F8F00;
 $green4: #75EE3B;
 $green5: #95EE6B;
+
+$deathly: #240000; 
+$ill: #58238C; 
+$fine: $blue3; 
+$good: #003F1D; 
+$healthy: $green3; 
+
+.deathly {  background-color: $deathly; }
+.ill {  background-color: $ill; }
+.fine {  background-color: $fine; }
+.good {  background-color: $good; }
+.healthy {  background-color: $healthy; }
+
+@mixin right-arrow($size, $color) {
+  position: relative;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    left: 100%;
+    width: 0; 
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    top: 0;
+    border-bottom: $size solid transparent;  
+    border-top: $size solid transparent; 
+    border-left: $size solid $color; 
+    z-index: -1;
+  }
+}

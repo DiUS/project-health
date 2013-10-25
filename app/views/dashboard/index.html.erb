@@ -3,9 +3,9 @@
 
   <div class="indicators">
     <% @indicator_measures.each do | measure | %>
-      <div class='indicator'>
+      <div class='indicator <%= measure.health %>'>
         <span class="title"><%= measure.name %></span>
-        <span class="mean"><%= '%.2f' % measure.mean %></span>
+        <span class="mean"><%= measure.mean ? '%.2f' % measure.mean : '-' %></span>
       </div>
     <% end %>
   </div>
