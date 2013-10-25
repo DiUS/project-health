@@ -15,18 +15,18 @@
   	<% @indicators.each do |indicator| %>
   		<div class="row indicator">
         <div class="name">
-          <%= indicator.name %>
+          <span class="indicator-name"><%= indicator.name %></span>
         </div>
         <div class="score">
-          <div></div>
-          <div><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
+          <span class="indicator-excluded">Not voting</span>
+          <span class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></span>
         </div>
   		</div>
   	<% end %>
 
     <div class="row">
       <div class="rating-action">
-        <%= submit_tag 'Vote' %>
+        <%= submit_tag('Vote', :class => "btn btn-default btn-block") %>
       </div>
     </div>
   <% end %>
@@ -37,18 +37,29 @@
     $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 0.5, 'tooltip': 'hide'})
                 .on('slide', function(ev) {
                   var value = ev.value;
-                  console.log("VALUE: "+value);
-                  var r = 220;
-                  var g = 220;
-                  var b = 220;
+                  var colour = "#A0A0A0";
                   
-                  if(value > 0) {
-                    var r = 255 - (value * 51);
-                    var g = (value * 51);
-                    var b = 128;
+                  switch(value) {
+                    case 0: colour = "#A0A0A0"; break;
+                    case 0.5: colour = "#A62500"; break;
+                    case 1: colour = "#FF6B40"; break;
+                    case 1.5: colour = "#FF9273"; break;
+                    case 2: colour = "#FFB292"; break;
+                    case 2.5: colour = "#FFEE77"; break;
+                    case 3: colour = "#666633"; break;
+                    case 3.5: colour = "#92FFB2"; break;
+                    case 4: colour = "#95EE6B"; break;
+                    case 4.5: colour = "#75EE3B"; break;
+                    case 5: colour = "#2E8F00"; break;
                   }
                   var indicator = $(this).parents('div[class*="indicator"]');
-                  indicator.css('background', 'rgb('+r+','+g+','+b+')');
+                  if(value == 0) {
+                    indicator.children('.score').children('.indicator-excluded').html('Not voting');
+                  } else {
+                    indicator.children('.score').children('.indicator-excluded').html('&nbsp;');
+                  }
+
+                  indicator.css('background', colour);
                 });
   });
 </script>
