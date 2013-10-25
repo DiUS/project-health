@@ -5,7 +5,7 @@
     <% @indicator_measures.each do | measure | %>
       <div class='indicator <%= measure.health %>'>
         <span class="title"><%= measure.name %></span>
-        <span class="mean"><%= measure.mean ? '%.2f' % measure.mean : '-' %></span>
+        <span class="mean"><%= measure.mean.try(:to_formatted_s, '%.2f') %></span>
       </div>
     <% end %>
   </div>

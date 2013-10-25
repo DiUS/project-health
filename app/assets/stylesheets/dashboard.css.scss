@@ -10,32 +10,32 @@
 
       padding: 0;
       margin: 5px;
-      background-color: $blue3;
+      background-color: $medium;
       font: 24px bold;
       line-height: 24px;
       z-index: -2;
 
-
-      &.deathly {  background-color: $deathly; }
-      &.ill {  background-color: $ill; }
-      &.fine {  background-color: $fine; }
-      &.good {  background-color: $good; }
-      &.healthy {  background-color: $healthy; }
+      &.deathly {  @include deathly; }
+      &.ill {  @include ill; }
+      &.fine {  @include fine; }
+      &.good {  @include good; }
+      &.healthy {  @include healthy; }
 
       .title {
-        @include right-arrow(22px, $blue5);
+        @include right-arrow(22px, $light);
         float: left;
         margin: 0;
         padding: 10px 15px;
-        background-color: $blue5;
+        background-color: $light;
+        color: $dark;
         white-space: nowrap;
         width: 40%;
       }
 
       .mean {
+        @include shadow;
         padding: 10px 15px;
         color: white;
-        text-shadow: 1px 1px #333;
         float: right
       }
     }

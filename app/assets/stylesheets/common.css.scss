@@ -1,16 +1,18 @@
+$blue: #00ACE9;
+$red: #D43F3F;
+$green: #6A9A1F;
 
+$light: #F6F6E8;
+$medium: #a0a0af;
+$dark: #404040;
 
-$red1: #FF3900;
-$red2: #BF5030;
-$red3: #A62500;
-$red4: #FF6B40;
-$red5: #FF9273;
+@mixin fg_bg($fg, $bg){ color: $fg; background-color: $bg; }
 
-$blue1: #01939A;
-$blue2: #1D7074;
-$blue3: #006064;
-$blue4: #34C6CD;
-$blue5: #5DC8CD;
+@mixin deathly {  @include fg_bg($light, $dark); }
+@mixin ill {  @include fg_bg($light, $red); }
+@mixin fine {  @include fg_bg($light, $medium); }
+@mixin good {  @include fg_bg($dark, $blue); }
+@mixin healthy {  @include fg_bg($light, $green); }
 
 $green1: #48DD00;
 $green2: #52A529;
@@ -31,6 +33,10 @@ $healthy: $green3;
 .fine {  background-color: $fine; }
 .good {  background-color: $good; }
 .healthy {  background-color: $healthy; }
+
+@mixin shadow {
+    text-shadow: 1px 1px $dark;
+}
 
 @mixin right-arrow($size, $color) {
   position: relative;

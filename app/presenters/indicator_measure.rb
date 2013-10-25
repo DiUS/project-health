@@ -29,10 +29,13 @@ class IndicatorMeasure
   
   def calculate_mean(values)
     values.delete_if(&:nil?)
+    return nil if values.empty?
+
     values.inject(:+).to_f / values.count 
   end
   
   def calculate_health(value)
+    return '' if value.nil?;
     return 'deathly' if value <= 1
     return 'ill' if value <= 2
     return 'fine' if value < 3
