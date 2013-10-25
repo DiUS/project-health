@@ -1,9 +1,9 @@
-class spansController < ApplicationController
+class SpansController < ApplicationController
   before_action :set_span, only: [:show, :edit, :update, :destroy]
 
   # GET /spans
   def index
-    @spans = span.all
+    @spans = Span.all
   end
 
   # GET /spans/1
@@ -12,7 +12,7 @@ class spansController < ApplicationController
 
   # GET /spans/new
   def new
-    @span = span.new
+    @span = Span.new
   end
 
   # GET /spans/1/edit
@@ -25,7 +25,7 @@ class spansController < ApplicationController
 
     @project = Project.find(params[:project_id])
 
-    @span = span.new(span_params)
+    @span = Span.new(span_params)
     @span.project = @project
 
     if @span.save
@@ -53,7 +53,7 @@ class spansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_span
-      @span = span.find(params[:id])
+      @span = Span.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -12,7 +12,33 @@
 <%= link_to 'Back', projects_path %>
 
 
-<h3>Activate Next Span</h3>
+<h3>Spans</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>To</th>
+      <th>From</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spans.each do |span| %>
+      <tr>
+        <td><%= span.name %></td>
+        <td><%= span.determine_start_of_span %></td>
+        <td><%= span.created_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h4>Acivate Next Span</h4>
+
   <%= form_for([@project,@span], :html => { class: "form-inline" }) do |f| %>
       <div class="row">
         <div class="span4">

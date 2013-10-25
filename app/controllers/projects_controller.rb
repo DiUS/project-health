@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @spans = Span.where("project_id = ?",@project.id).all
     @span = Span.new
   end
 
