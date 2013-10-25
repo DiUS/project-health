@@ -25,7 +25,7 @@ gem 'd3js-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass-rails'
-gem 'font-awesome-sass-rails'
+gem 'font-awesome-sass'
 
 group :production do
   gem 'pg', '0.15.1'

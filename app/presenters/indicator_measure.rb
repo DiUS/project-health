@@ -9,7 +9,7 @@ class IndicatorMeasure
   end
 
   def mean
-    @mean ||= ( @ratings.map(&:score).inject(:+).to_f / @ratings.count )
+    @mean ||= calculate_mean @ratings.map(&:score)
   end
 
   def self.for_project(project)
@@ -20,4 +20,12 @@ class IndicatorMeasure
         ratings: indicator.ratings)
     end
   end
+
+  private 
+  
+  def calculate_mean(values)
+    values.delete_if(&:nil?)
+    values.inject(:+).to_f / values.count 
+  end
+
 end
