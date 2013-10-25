@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    @indicators = Indicator.all
     @project = Project.find(params[:project_id])
+    @indicator_measures = IndicatorMeasure.for_project(@project)
   end
 end
