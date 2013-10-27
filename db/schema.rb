@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20131024205724) do
     t.string "name"
   end
 
+  create_table "project_indicators", force: true do |t|
+    t.integer "project_id"
+    t.integer "indicator_id"
+  end
+
   create_table "ratings", force: true do |t|
     t.integer "span_id"
     t.integer "indicator_id"

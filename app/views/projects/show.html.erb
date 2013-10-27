@@ -12,6 +12,26 @@
 </div>
 
 <div class="well">
+<h3>Project Indciators</h3>  
+<p id="notice"><%= notice %></p>
+
+
+  <%= form_tag(project_update_indicators_path(@project), :method => "post") do %>
+
+        <%@indicators.each do |indicator|%>
+          <div class="row">
+            <%= check_box_tag(indicator.name,indicator.name,@project.project_has_indicator(indicator))%><%=indicator.name%>
+          </div>
+        <%end%>
+        <div class="span2 offset9">
+          <%= submit_tag("Update Indicators",:class => "btn btn-primary btn-bold btn-large span2") %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+
+<div class="well">
 <h3>Spans</h3>
 
 <table class="table table-striped">

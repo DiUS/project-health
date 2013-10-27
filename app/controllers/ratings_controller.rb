@@ -1,7 +1,7 @@
 class RatingsController < ApplicationController
   def index
-    @indicators = Indicator.find(:all, :order => "sort_order")
     @project = Project.find(params[:project_id])
+    @project_indicators = ProjectIndicator.joins(:indicator).where("project_id = ?", @project.id).order("indicators.sort_order")
     @span = @project.spans.current
   end
 

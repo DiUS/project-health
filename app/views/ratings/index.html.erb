@@ -12,7 +12,8 @@
   <% end %>
 
   <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
-  	<% @indicators.each do |indicator| %>
+  	<% @project_indicators.each do |project_indicator| %>
+    <% indicator = project_indicator.indicator%>
   		<div class="indicator unrated">
         <div class="row name">
           <span class="indicator-name"><%= indicator.name %></span>

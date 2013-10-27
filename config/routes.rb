@@ -15,5 +15,6 @@ ProjectWealth::Application.routes.draw do
     resources :spans
     resources :dashboard, only: [:index]
     resources :ratings, only: [:index, :create]
+    post "update_indicators"
   end
 end
