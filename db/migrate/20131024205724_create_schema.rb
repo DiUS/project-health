@@ -30,6 +30,17 @@ class CreateSchema < ActiveRecord::Migration
     add_foreign_key(:indicators, :categories)
     add_index(:indicators, :category_id)
 
+    create_table :project_indicators do |t|
+      t.integer :project_id
+      t.integer :indicator_id
+    end
+
+    add_foreign_key(:project_indicators, :indicators)
+    add_index(:project_indicators, :indicator_id)
+
+    add_foreign_key(:project_indicators, :projects)
+    add_index(:project_indicators, :project_id)
+
     create_table :ratings do |t|
       t.belongs_to :span
       t.belongs_to :indicator
