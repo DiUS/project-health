@@ -18,7 +18,7 @@ $dark: #404040;
 @mixin unrated { @include fg_bg($dark, $medium); }
 @mixin deathly {  @include lt_with_bg($dark); }
 @mixin ill {  @include lt_with_bg($red); }
-@mixin fine {  @include fg_bg($dark, $light); }
+@mixin fine {  @include lt_with_bg($medium); }
 @mixin good {  @include fg_bg($dark, $blue); }
 @mixin healthy {  @include lt_with_bg($green); }
 
