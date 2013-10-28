@@ -1,6 +1,7 @@
 class IndicatorMeasure
   attr_reader :name
   attr_reader :ratings
+  attr_reader :comments
 
   def initialize(map = {})
     map.each do |key, value| 
@@ -31,10 +32,11 @@ class IndicatorMeasure
     current_span = project.spans.current
     previous_span = project.spans.previous
     project.project_indicators.map do |project_indicator|
-      new( 
+      new(
         name: project_indicator.indicator.name,
         ratings: project_indicator.indicator.ratings.on_span(current_span),
-        previous_ratings: project_indicator.indicator.ratings.on_span(previous_span) )
+        previous_ratings: project_indicator.indicator.ratings.on_span(previous_span),
+        comments: Comment.where(span: current_span, indicator: project_indicator).order('id ASC') )
     end
   end
 

@@ -37,13 +37,16 @@ ActiveRecord::Schema.define(version: 20131024205724) do
 
   add_index "indicators", ["category_id"], name: "index_indicators_on_category_id", using: :btree
 
-  create_table "projects", force: true do |t|
-    t.string "name"
-  end
-
   create_table "project_indicators", force: true do |t|
     t.integer "project_id"
     t.integer "indicator_id"
+  end
+
+  add_index "project_indicators", ["indicator_id"], name: "index_project_indicators_on_indicator_id", using: :btree
+  add_index "project_indicators", ["project_id"], name: "index_project_indicators_on_project_id", using: :btree
+
+  create_table "projects", force: true do |t|
+    t.string "name"
   end
 
   create_table "ratings", force: true do |t|
@@ -68,6 +71,9 @@ ActiveRecord::Schema.define(version: 20131024205724) do
   add_foreign_key "comments", "spans", name: "comments_span_id_fk"
 
   add_foreign_key "indicators", "categories", name: "indicators_category_id_fk"
+
+  add_foreign_key "project_indicators", "indicators", name: "project_indicators_indicator_id_fk"
+  add_foreign_key "project_indicators", "projects", name: "project_indicators_project_id_fk"
 
   add_foreign_key "ratings", "indicators", name: "ratings_indicator_id_fk"
   add_foreign_key "ratings", "spans", name: "ratings_span_id_fk"
