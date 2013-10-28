@@ -23,6 +23,7 @@ class IndicatorsController < ApplicationController
   def create
     @indicator = Indicator.new(indicator_params)
 
+
     if @indicator.save
       redirect_to @indicator, notice: 'Indicator was successfully created.'
     else
@@ -53,6 +54,6 @@ class IndicatorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def indicator_params
-      params.require(:indicator).permit(:name, :description, :one_label, :five_label, :sort_order)
+      params.require(:indicator).permit(:name, :description, :one_label, :five_label, :sort_order,:category_id)
     end
 end
