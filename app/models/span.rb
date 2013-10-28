@@ -3,6 +3,7 @@ class Span < ActiveRecord::Base
   has_many :ratings
 
   scope :current, lambda { order('created_at desc').first }
+  scope :previous, lambda { order('created_at desc').second }
 
 	def determine_start_of_span
   	required_spans = Span.where('created_at < ? and project_id = ?',created_at,project.id).order("created_at Desc")
