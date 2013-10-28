@@ -22,6 +22,7 @@ proj1_ind1 = ProjectIndicator.create(project: project1, indicator: ind1)
 proj1_ind2 = ProjectIndicator.create(project: project1, indicator: ind2)
 proj1_ind3 = ProjectIndicator.create(project: project1, indicator: ind3)
 proj1_ind4 = ProjectIndicator.create(project: project1, indicator: ind4)
+proj1_ind5 = ProjectIndicator.create(project: project1, indicator: ind5)
 
 proj2_ind5 = ProjectIndicator.create(project: project2, indicator: ind5)
 proj2_ind6 = ProjectIndicator.create(project: project2, indicator: ind6)
@@ -34,7 +35,6 @@ proj2_ind12 = ProjectIndicator.create(project: project2, indicator: ind12)
 
 project1_span1 = Span.create(project: project1, name: "Span1", status: 'past',created_at: Time.now-200)
 project1_span2 = Span.create(project: project1, name: "Span2", status: 'current',created_at: Time.now)
-
 
 project2_span1 = Span.create(project: project2, name: "First Span", status: 'current',created_at: Time.now)
 
@@ -55,10 +55,13 @@ Rating.create(span: project1_span2, indicator: ind1, score: 2)
 Rating.create(span: project1_span2, indicator: ind1, score: 1)
 Rating.create(span: project1_span2, indicator: ind1, score: 1)
 
+Rating.create(span: project1_span2, indicator: ind2, score: 2)
+Rating.create(span: project1_span2, indicator: ind2, score: 2)
 Rating.create(span: project1_span2, indicator: ind2, score: 3)
-Rating.create(span: project1_span2, indicator: ind2, score: 4)
-Rating.create(span: project1_span2, indicator: ind2, score: 3)
-Rating.create(span: project1_span2, indicator: ind2, score: 5)
+Rating.create(span: project1_span2, indicator: ind2, score: 2)
 
 Rating.create(span: project1_span2, indicator: ind3, score: 3)
+Rating.create(span: project1_span2, indicator: ind3, score: 4)
+
+Rating.create(span: project1_span2, indicator: ind3, score: 4)
 Rating.create(span: project1_span2, indicator: ind3, score: 5)
