@@ -4,14 +4,11 @@
 
 div#rating {
   @extend .container;
+  text-align: left;
 
   .rating-header {
   	@extend .col-md-12;
-  	font-weight: bold;
-    font-size: 1.4em;
     padding: 20px 15px;
-    text-align: center;
-    color: #006064;
 
     .dashboard-link {
       font-weight: none;
@@ -48,8 +45,10 @@ div#rating {
       }
 
       .indicator-excluded {
-        width: 70px;
-        display: inline-block;
+        width: 75px;
+        font-weight: bold;
+        font-size: 1.0em;
+        margin-right: 20px;
       }
 
       .indicator-slider input{

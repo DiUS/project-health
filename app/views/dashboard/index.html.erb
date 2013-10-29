@@ -14,7 +14,9 @@
         </span>
 
         <% if measure.comments.length > 0 %>
-          <span class="comments badge badge-warning" data-toggle="modal" data-target="#comment-<%= index %>"><%= measure.comments.length %></span>
+          <a href="#" class="comments btn btn-default btn-mini badge badge-warning" data-toggle="modal" data-target="#comment-<%= index %>">
+            <i class="fa fa-comment"><%= measure.comments.length %></i>
+          </a>
         <% end %>
       </div>
     <% end %>
