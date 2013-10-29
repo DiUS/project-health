@@ -25,7 +25,12 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path, html_options = {class: "btn"}%>
-<%= link_to 'Manage Indicators', indicators_path, html_options = {class: "btn"}%>
+<%= link_to new_project_path, html_options = {class: "btn"} do %>
+  <i class="fa fa-plus">New Project</i>
+<% end %>
+
+<%= link_to indicators_path, html_options = {class: "btn"} do %>
+  <i class="fa fa-reorder">Manage Indicators</i>
+<% end %>
 
 </div>

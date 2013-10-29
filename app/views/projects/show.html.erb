@@ -74,9 +74,19 @@
   </div>
 
   </div>
-  <%= link_to 'View projects', projects_path, html_options = {class: "btn"}%>
-  <%= link_to 'View Dashboard', project_dashboard_index_path(@project), html_options = {class: "btn"}%>
-  <%= link_to 'View Ratings',  project_ratings_path(@project) , html_options = {class: "btn"}%>
+
+<%= link_to projects_path, html_options = {class: "btn"} do %>
+  <i class="fa fa-list">View Projects</i>
+<% end %>
+
+<%= link_to project_dashboard_index_path(@project), html_options = {class: "btn"} do %>
+  <i class="fa fa-dashboard">View Dashboard</i>
+<% end %>
+
+<%= link_to project_ratings_path(@project), html_options = {class: "btn"} do %>
+  <i class="fa fa-bar-chart-o">View Ratings</i>
+<% end %>
+
 </div>
 
 
