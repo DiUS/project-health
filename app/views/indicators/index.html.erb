@@ -32,8 +32,8 @@
   </table>
 
   
- <div class="row"><%= link_to 'New Indicator', new_indicator_path %></div>
- <div class="row"><%= link_to 'To Projects Dashboard', projects_path %></div>
+<%= link_to 'New Indicator', new_indicator_path, html_options = {class: "btn"}%>
+<%= link_to 'Manage Projects', projects_path, html_options = {class: "btn"} %>
 
   <br>
 </div>

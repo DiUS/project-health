@@ -12,7 +12,7 @@
   </div>
 
   <div class="well span12">
-  <h3>Project Indciators</h3>  
+  <h3>Project Indicators</h3>  
   <p id="notice"><%= notice %></p>
 
 
@@ -22,7 +22,9 @@
           <%if index % 3 == 0%>
             <div class="row">
           <%end%>  
+          <div class="col-md-2">
           <%= check_box_tag(indicator.name,indicator.name,@project.project_has_indicator(indicator))%><%=indicator.name%>
+        </div>
           <%if( (index != 0  && index % 3 == 2)|| @indicators.size == index-1 )  %>  
             </div>
           <%end%>
@@ -72,11 +74,12 @@
   </div>
 
   </div>
+  <%= link_to 'View projects', projects_path, html_options = {class: "btn"}%>
+  <%= link_to 'View Dashboard', project_dashboard_index_path(@project), html_options = {class: "btn"}%>
+  <%= link_to 'View Ratings',  project_ratings_path(@project) , html_options = {class: "btn"}%>
 </div>
 
-<%= link_to 'Back', projects_path %>
 
-<%= link_to 'View Dashboard', project_dashboard_index_path(@project) %>
 
 
 
