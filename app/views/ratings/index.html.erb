@@ -1,6 +1,9 @@
 <div id="rating">
   <div class="row">
     <div class="rating-header">
+      <%= link_to project_dashboard_index_path(@project), html_options = {class: "btn dashboard-link"} do %>
+        <i class="fa fa-dashboard">Dashboard</i>
+      <% end %>
       Ratings for <%= @span.name %>
     </div>
   </div>
@@ -49,15 +52,15 @@
 
     		</div>
     	<% end %>
-
-      <div class="row">&nbsp;</div>
-
-      <div class="row">
-        <div class="rating-action">
-          <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
-        </div>
-      </div>
     <% end %>
+  </div>
+
+  <div class="row">&nbsp;</div>
+
+  <div class="row">
+    <div class="rating-action">
+      <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
+    </div>
   </div>
 </div>
 

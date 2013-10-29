@@ -12,6 +12,11 @@ div#rating {
     padding: 20px 15px;
     text-align: center;
     color: #006064;
+
+    .dashboard-link {
+      font-weight: none;
+      float: left;
+    }
   }
 
 	.indicator {
