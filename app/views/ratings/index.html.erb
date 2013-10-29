@@ -14,8 +14,8 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
+  <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
+    <div class="row">
     	<% @project_indicators.each do |project_indicator| %>
         <% indicator = project_indicator.indicator%>
     		<div class="indicator unrated">
@@ -52,16 +52,16 @@
 
     		</div>
     	<% end %>
-    <% end %>
-  </div>
-
-  <div class="row">&nbsp;</div>
-
-  <div class="row">
-    <div class="rating-action">
-      <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
     </div>
-  </div>
+
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+      <div class="rating-action">
+        <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <script>
