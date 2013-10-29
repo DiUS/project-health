@@ -13,7 +13,9 @@ class IndicatorMeasure
   end
 
   def previous_mean
-    @previous_mean ||= calculate_mean @previous_ratings.map(&:score)
+    if @previous_ratings
+      @previous_mean ||= calculate_mean @previous_ratings.map(&:score)
+    end
   end
 
   def delta
@@ -28,13 +30,17 @@ class IndicatorMeasure
   end
 
   def self.for_project(project)
-    current_span = project.spans.current
-    previous_span = project.spans.previous
+    puts "in for project "
+    current_span = Span.current(project)
+    previous_span = Span.previous(project)
     project.project_indicators.map do |project_indicator|
+      puts "current_span #{current_span.inspect}"
+      previous_ratings = Rating.where("span_id = ? and indicator_id = ?",previous_span.id,project_indicator.indicator.id) if previous_span
+      current_rating = Rating.where("span_id = ? and indicator_id = ?",current_span.id,project_indicator.indicator.id) if current_span
       new( 
         name: project_indicator.indicator.name,
-        ratings: project_indicator.indicator.ratings.on_span(current_span),
-        previous_ratings: project_indicator.indicator.ratings.on_span(previous_span) )
+        ratings: current_rating,
+        previous_ratings: previous_ratings)
     end
   end
 
