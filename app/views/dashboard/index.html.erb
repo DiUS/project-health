@@ -17,31 +17,37 @@
           <span class="comments badge badge-warning" data-toggle="modal" data-target="#comment-<%= index %>"><%= measure.comments.length %></span>
         <% end %>
       </div>
-
-      <div class="modal fade" id="comment-<%= index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Comments</h4>
-            </div>
-            <div class="modal-body">
-              <ul>
-                <% measure.comments.each do | comment | %>
-                  <li><%= comment.comment %></li>
-                <% end %>
-              <ul>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="cancel-comment btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
     <% end %>
   </div>
 
+  <div class="dashboard-navigation">
+    <a href="<%= project_ratings_path(project_id: @project.id) %>" target="_blank"><i class="fa fa-bar-chart-o">Ratings</i></a>
+  </div>
+
 </div>
+
+<% @indicator_measures.each_with_index do | measure, index | %>
+  <div class="modal fade" id="comment-<%= index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Comments</h4>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <% measure.comments.each do | comment | %>
+              <li><%= comment.comment %></li>
+            <% end %>
+          <ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="cancel-comment btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <script>
   $(function() {

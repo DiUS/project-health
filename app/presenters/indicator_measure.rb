@@ -3,11 +3,6 @@ class IndicatorMeasure
   attr_reader :ratings
   attr_reader :comments
 
-
-
-
-
-
   def initialize(map = {})
     map.each do |key, value| 
       instance_variable_set("@#{key}", value)

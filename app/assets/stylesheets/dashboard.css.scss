@@ -2,24 +2,21 @@
 
   .indicators {
 
+    clear: both;
+    z-index: 0;
+    position: relative;
+
     .indicator {
       @extend .col-xs-11;
       @extend .col-sm-5;
       @extend .col-md-4;
       @extend .col-lg-3;
-      @include unrated;
 
       padding: 0;
       margin: 5px;
       font: 24px bold;
       line-height: 24px;
-      z-index: -2;
-
-      &.deathly {  @include deathly; }
-      &.ill {  @include ill; }
-      &.fine {  @include fine; }
-      &.good {  @include good; }
-      &.healthy {  @include healthy; }
+      z-index: -1;
 
       .title {
         @include right-arrow(22px, $light);
@@ -45,5 +42,11 @@
         margin-top: 5px;
       }
     }
+  }
+
+  .dashboard-navigation {
+    padding-top: 30px;
+    padding-left: 10px;
+    clear: both;
   }
 }
