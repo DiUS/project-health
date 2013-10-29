@@ -11,75 +11,94 @@
     </div>
   <% end %>
 
-  <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
-  	<% @project_indicators.each do |project_indicator| %>
-    <% indicator = project_indicator.indicator%>
-  		<div class="indicator unrated">
-        <div class="row name">
-          <span class="indicator-name"><%= indicator.name %></span>
-          <button type="button" class="btn comment-button" data-toggle="modal" data-target="#comment-<%= indicator.id %>">
-            <i class="fa fa-comment"></i>
-          </button>
-        </div>
-        <div class="row score">
-          <div class="indicator-excluded">No vote</div>
-          <div class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
-        </div>
+  <div class="row">
+    <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
+    	<% @project_indicators.each do |project_indicator| %>
+        <% indicator = project_indicator.indicator%>
+    		<div class="indicator unrated">
+          <div class="row name">
+            <span class="indicator-name"><%= indicator.name %></span>
+            <button type="button" class="btn btn-primary comment-button" data-toggle="modal" data-target="#comment-<%= indicator.id %>">
+              <i class="fa fa-comment"></i>
+            </button>
+          </div>
+          <div class="row score">
+            <div class="indicator-excluded">
+              <i class="fa fa-ban"></i>No vote
+            </div>
+            <div class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
+          </div>
 
-        <div class="modal fade" id="comment-<%= indicator.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Add a comment</h4>
-              </div>
-              <div class="modal-body">
-                <%= text_area_tag("comments[#{indicator.id}]", '', :class => "indicator-comment") %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="cancel-comment btn btn-default">Cancel</button>
-                <button type="button" class="save-comment btn btn-primary">Add</button>
+          <div class="modal fade" id="comment-<%= indicator.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Add a comment</h4>
+                </div>
+                <div class="modal-body">
+                  <%= text_area_tag("comments[#{indicator.id}]", '', :class => "indicator-comment") %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="cancel-comment btn btn-default">Cancel</button>
+                  <button type="button" class="save-comment btn btn-primary">Add</button>
+                </div>
               </div>
             </div>
           </div>
+
+    		</div>
+    	<% end %>
+
+      <div class="row">&nbsp;</div>
+
+      <div class="row">
+        <div class="rating-action">
+          <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
         </div>
-
-  		</div>
-  	<% end %>
-
-    <div class="row">&nbsp;</div>
-
-    <div class="row">
-      <div class="rating-action">
-        <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <script>
   $(function() {
-    $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 1, 'tooltip': 'hide'})
+    $('.slider').slider({'min': 0, 'max': 5, 'value': 0, 'step': 0.5, 'tooltip': 'hide'})
                 .on('slide', function(ev) {
                   var value = ev.value;
-                  var cssClass = "indicator ";
+                  var colour = "#C0C0C0";
 
-                  switch(value) {
-                    case 0: cssClass += "unrated"; break;
-                    case 1: cssClass += "deathly"; break;
-                    case 2: cssClass += "ill"; break;
-                    case 3: cssClass += "fine"; break;
-                    case 4: cssClass += "good"; break;
-                    case 5: cssClass += "healthy"; break;
+                  if(value == 5) {
+                    colour = '#00cc00';
+                  } else if(value >= 4.5) {
+                    colour = '#33cc33';
+                  } else if(value >= 4) {
+                    colour = '#33ff33';
+                  } else if(value >= 3.5) {
+                    colour = '#66ff33';
+                  } else if(value >= 3) {
+                    colour = '#99ff33';
+                  } else if(value >= 2.5) {
+                    colour = '#ccff33';
+                  } else if(value >= 2) {
+                    colour = '#ffff33';
+                  } else if(value >= 1.5) {
+                    colour = '#ffcc33';
+                  } else if(value >= 1) {
+                    colour = '#ff9933';
+                  } else if(value >= 0.5) {
+                    colour = '#ff6600';
                   }
+
                   var indicator = $(this).closest('div[class^="indicator "]');
+                  var textElement = indicator.children('.score').children('.indicator-excluded');
                   if(value == 0) {
-                    indicator.children('.score').children('.indicator-excluded').html('Not voting');
+                    textElement.html('<i class="fa fa-ban"></i>No vote');
                   } else {
-                    indicator.children('.score').children('.indicator-excluded').html('&nbsp;');
+                    textElement.html('&nbsp;');
                   }
 
-                  indicator.attr('class', cssClass);
+                  indicator.css('background', colour);
                 });
 
     var previousComment = '';

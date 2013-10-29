@@ -8,23 +8,23 @@ div#rating {
   .rating-header {
   	@extend .col-md-12;
   	font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.4em;
     padding: 20px 15px;
     text-align: center;
-    background: #5DC8CD;
     color: #006064;
   }
 
 	.indicator {
 	  @extend .col-md-12;
-    padding: 15px 15px;
+    padding: 10px;
     border: 1px solid #606060;
+    background: #C0C0C0;
 
 	  .name {
 	    @extend .col-md-12;
 
       .indicator-name {
-        font-size: 1.2em;
+        font-size: 1.4em;
         font-weight: bold;
       }
 
@@ -37,13 +37,14 @@ div#rating {
       @extend .col-md-12;
 
       .indicator-excluded, .indicator-slider {
-        float: left;
-         height: 40px;
+        display: inline-block;
+        height: 40px;
         line-height: 40px;
       }
 
       .indicator-excluded {
         width: 70px;
+        display: inline-block;
       }
 
       .indicator-slider input{
@@ -62,5 +63,15 @@ div#rating {
 
   .row rating-action {
     @extend .col-md-12;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .indicator-comment {
+    height: 100%;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
 }
