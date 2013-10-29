@@ -41,7 +41,7 @@ class IndicatorMeasure
         name: project_indicator.indicator.name,
         ratings: current_rating,
         previous_ratings: previous_ratings,
-        comments: Comment.where(span: current_span, indicator: project_indicator).order('id ASC') )
+        comments: Comment.where(span: current_span, indicator: project_indicator.indicator).order('id ASC') )
     end
   end
 
