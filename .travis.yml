@@ -4,7 +4,7 @@ rvm:
 deploy:
   provider: heroku
   api_key:
-    secure: KQqkSaLb/6+uhpEe8W2oe0uFCnWbILJ8bP/dB3ht09+NZx7sSWFjBXQT15SAkx2GNSeflBSIAhYVZpgibhD6IJ6WQWtR5vw4Q3epkklGSJ3EJsLtJ6ChLMmVcWvtzPLNswmQujdhYDC+zOdtylvzBx8+MuDZCNVca0BfPKDwIZc=
-  app: project-health
+    secure: n3zNUPvIHkPJgiT62YtXjlMB2hFghfFO3wv2qUfR+bJyoSaFixWQ04ZvEdIXxv5UoTY7JTonlsRwUub0GxUU9IeVz2/x4ApF/TU3DRHXhTbauFhV/yswpK5p+aCG+6EXPRbKvrsUyVmLSfv0SPnCdI31C56LMrkwJ1PLeJYPmSU=
+  app: project-health-dius
   on:
     repo: DiUS/project-health
