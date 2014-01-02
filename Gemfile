@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails'
+gem 'rails', '4.0.2'
 gem 'railties'
 gem 'uglifier'
 
@@ -23,13 +23,13 @@ gem 'ng-rails-csrf'
 gem 'd3js-rails'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 gem 'bootstrap-sass-rails'
 gem 'font-awesome-rails'
 
 group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :test, :development do

@@ -27,16 +27,16 @@ class IndicatorMeasure
   end
 
   def self.for_project(project)
-    current_span = Span.current(project)
-    previous_span = Span.previous(project)
+    current_iteration = Iteration.current(project)
+    previous_iteration = Iteration.previous(project)
     project.project_indicators.map do |project_indicator|
-      previous_ratings = Rating.where("span_id = ? and indicator_id = ?",previous_span.id,project_indicator.indicator.id) if previous_span
-      current_rating = Rating.where("span_id = ? and indicator_id = ?",current_span.id,project_indicator.indicator.id) if current_span
+      previous_ratings = Rating.where("iteration_id = ? and indicator_id = ?", previous_iteration.id, project_indicator.indicator.id) if previous_iteration
+      current_rating = Rating.where("iteration_id = ? and indicator_id = ?", current_iteration.id, project_indicator.indicator.id) if current_iteration
       new( 
         name: project_indicator.indicator.name,
         ratings: current_rating,
         previous_ratings: previous_ratings,
-        comments: Comment.where(span: current_span, indicator: project_indicator.indicator).order('id ASC') )
+        comments: Comment.where(iteration: current_iteration, indicator: project_indicator.indicator).order('id ASC') )
     end
   end
 

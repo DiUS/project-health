@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :spans
+  has_many :iterations
   has_many :project_indicators
 
    def project_has_indicator(passed_indicator)

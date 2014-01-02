@@ -4,15 +4,17 @@ class CreateSchema < ActiveRecord::Migration
       t.string :name
     end
 
-    create_table :spans do |t|
+    create_table :iterations do |t|
       t.belongs_to :project
       t.string :name
       t.string :status
-      t.datetime :created_at,      :null => false
+      t.time :from
+      t.time :to
+      t.integer :sort_order
     end
 
-    add_foreign_key(:spans, :projects)
-    add_index(:spans, :project_id)
+    add_foreign_key(:iterations, :projects)
+    add_index(:iterations, :project_id)
 
     create_table :categories do |t|
       t.string :name
@@ -37,30 +39,29 @@ class CreateSchema < ActiveRecord::Migration
 
     add_foreign_key(:project_indicators, :indicators)
     add_index(:project_indicators, :indicator_id)
-
     add_foreign_key(:project_indicators, :projects)
     add_index(:project_indicators, :project_id)
 
     create_table :ratings do |t|
-      t.belongs_to :span
+      t.belongs_to :iteration
       t.belongs_to :indicator
       t.integer :score
     end
 
-    add_foreign_key(:ratings, :spans)
+    add_foreign_key(:ratings, :iterations)
     add_foreign_key(:ratings, :indicators)
-    add_index(:ratings, :span_id)
+    add_index(:ratings, :iteration_id)
     add_index(:ratings, :indicator_id)
 
     create_table :comments do |t|
-      t.belongs_to :span
+      t.belongs_to :iteration
       t.belongs_to :indicator
       t.text :comment
     end
 
-    add_foreign_key(:comments, :spans)
+    add_foreign_key(:comments, :iterations)
     add_foreign_key(:comments, :indicators)
-    add_index(:comments, :span_id)
+    add_index(:comments, :iteration_id)
     add_index(:comments, :indicator_id)
   end
 end

@@ -1,10 +1,10 @@
-<%= form_for(@span) do |f| %>
-  <% if @span.errors.any? %>
+<%= form_for(@iteration) do |f| %>
+  <% if @iteration.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@span.errors.count, "error") %> prohibited this span from being saved:</h2>
+      <h2><%= pluralize(@iteration.errors.count, "error") %> prohibited this iteration from being saved:</h2>
 
       <ul>
-      <% @span.errors.full_messages.each do |msg| %>
+      <% @iteration.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

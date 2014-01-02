@@ -37,7 +37,7 @@
 
 
   <div class="well span12">
-  <h3>Spans</h3>
+  <h3>Iterations</h3>
 
   <table class="table table-striped">
     <thead>
@@ -51,11 +51,11 @@
     </thead>
 
     <tbody>
-      <% @spans.each do |span| %>
+      <% @iterations.each do |iteration| %>
         <tr>
-          <td><%= span.name %></td>
-          <td><%= span.determine_start_of_span %></td>
-          <td><%= span.created_at.strftime('%e-%m-%y %H:%M') %></td>
+          <td><%= iteration.name %></td>
+          <td><%= iteration.from.try(:strftime, '%e-%m-%y %H:%M') %></td>
+          <td><%= iteration.to.try(:strftime, '%e-%m-%y %H:%M') %></td>
         </tr>
       <% end %>
     </tbody>
@@ -63,13 +63,11 @@
 
 
 
-  <div class="row col-md-offset-1">
-    <%= form_for([@project,@span]) do |f| %>
+  <div class="row">
+    <%= form_for([@project, @iteration]) do |f| %>
           <%= f.label :name %>
           <%= f.text_field :name %>
-          <%= f.submit "Activate Span", class: "btn btn-large btn-primary" %>
-
-
+          <%= f.submit "New Iteration", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 

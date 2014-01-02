@@ -2,22 +2,22 @@ class RatingsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @project_indicators = ProjectIndicator.joins(:indicator).where("project_id = ?", @project.id).order("indicators.sort_order")
-    @span = Span.current(@project)
+    @iteration = Iteration.current(@project)
   end
 
   def create
     project = Project.find(params[:project_id])
-    span = Span.current(project)
+    iteration = Iteration.current(project)
     
     indicators = Indicator.find(:all)
     indicators.each do |indicator|
       score = params[:scores]["#{indicator.id}"]
       score = nil if score == "0"
-      Rating.create(span: span, indicator: indicator, score: score)
+      Rating.create(iteration: iteration, indicator: indicator, score: score)
 
       message = params[:comments]["#{indicator.id}"]
       unless message.blank?
-        Comment.create(span: span, indicator: indicator, comment: message)
+        Comment.create(iteration: iteration, indicator: indicator, comment: message)
       end
     end
 

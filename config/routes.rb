@@ -1,18 +1,15 @@
 ProjectWealth::Application.routes.draw do
 
-  resources :spans
-
+  resources :iterations
   resources :projects
-
   resources :categories
+  resources :indicators
 
   get "dashboard/index"
   root 'application#index'
 
-  resources :indicators
-
   resources :projects do
-    resources :spans
+    resources :iterations
     resources :dashboard, only: [:index]
     resources :ratings, only: [:index, :create]
     post "update_indicators"
