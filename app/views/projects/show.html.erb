@@ -23,7 +23,7 @@
             <div class="row">
           <%end%>  
           <div class="col-md-2">
-          <%= check_box_tag(indicator.name,indicator.name,@project.project_has_indicator(indicator))%><%=indicator.name%>
+          <%= check_box_tag(indicator.name, indicator.name, @project.project_has_indicator(indicator))%> <%=indicator.name%>
         </div>
           <%if( (index != 0  && index % 3 == 2)|| @indicators.size == index-1 )  %>  
             </div>

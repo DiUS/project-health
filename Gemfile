@@ -35,4 +35,8 @@ end
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
+  gem 'factory_girl', :require => false
+  gem 'factory_girl_rails', :require => false 
 end

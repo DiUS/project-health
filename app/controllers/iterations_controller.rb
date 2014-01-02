@@ -22,15 +22,7 @@ class IterationsController < ApplicationController
   # POST /iterations
   def create
     @project = Project.find(params[:project_id])
-    current_iteration = Iteration.current(@project)
-    @iteration = Iteration.new(iteration_params)
-    @iteration.project = @project
-    @iteration.status = Iteration::CURRENT
-    @iteration.sort_order = current_iteration.sort_order + 1
-
-    if @iteration.save
-      current_iteration.status = Iteration::PAST
-      current_iteration.save
+    if @project.add_iteration(iteration_params[:name])
       redirect_to project_path(@project), notice: 'iteration was successfully created.'
     else
       redirect_to project_path(@project), notice: 'iteration was not sucsessfully created.'
