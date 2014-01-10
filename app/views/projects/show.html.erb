@@ -43,10 +43,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>From</th>
-        <th>To</th>
-        <th></th>
-        <th></th>
+
       </tr>
     </thead>
 
@@ -54,8 +51,6 @@
       <% @iterations.each do |iteration| %>
         <tr>
           <td><%= iteration.name %></td>
-          <td><%= iteration.from.try(:strftime, '%e-%m-%y %H:%M') %></td>
-          <td><%= iteration.to.try(:strftime, '%e-%m-%y %H:%M') %></td>
         </tr>
       <% end %>
     </tbody>
