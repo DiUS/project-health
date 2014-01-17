@@ -1,4 +1,5 @@
 class Iteration < ActiveRecord::Base
+  validates :name, presence: true
   CURRENT = 'current'
   PAST = 'past'
 
