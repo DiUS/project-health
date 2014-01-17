@@ -1,0 +1,10 @@
+# some simple project indicators
+techDebt:
+  name: Tech Debt
+  sort_order: 1
+  category: technical
+
+morale:
+  name: Morale
+  sort_order: 2
+  category: team

@@ -1,6 +1,7 @@
-<h1>Listing categories</h1>
+<div class="container">
+  <h1>Listing categories</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -22,6 +23,7 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path, html_options = {class: "btn"} %>
+<%= link_to 'Manage Indicators', indicators_path, html_options = {class: "btn"} %>
+  <br>
+</div>

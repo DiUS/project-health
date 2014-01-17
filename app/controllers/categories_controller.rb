@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1
   def show
+   @indicators = Indicator.where(category_id: @category.id)
   end
 
   # GET /categories/new

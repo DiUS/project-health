@@ -1,7 +1,9 @@
 class Project < ActiveRecord::Base
   validates :name, presence: true
+  attr_accessible :name
   has_many :iterations
   has_many :project_indicators
+  has_many :indicators, :through => :project_indicators
 
   def add_iteration(name)
     current_iteration = Iteration.current(self)

@@ -1,9 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
   <%= @category.name %>
 </p>
 
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @indicators.each do |indicator| %>
+      <tr>
+        <td><%= indicator.name %></td>
+        <td><%= link_to 'Show', indicator %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+</div>
