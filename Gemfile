@@ -5,12 +5,12 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'railties'
 gem 'uglifier'
+gem 'protected_attributes'
 
 gem 'activerecord'
 gem 'activeresource'
 gem 'foreigner'
 gem 'sqlite3', group: [:test]
-gem 'mysql2'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'browser'
@@ -38,5 +38,7 @@ group :test, :development do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'factory_girl', :require => false
-  gem 'factory_girl_rails', :require => false 
+  gem 'factory_girl_rails', :require => false
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
