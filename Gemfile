@@ -11,7 +11,6 @@ gem 'activerecord'
 gem 'activeresource'
 gem 'foreigner'
 gem 'sqlite3', group: [:test]
-gem 'mysql2'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'browser'
