@@ -16,7 +16,7 @@ describe CategoriesController do
     it "can create a new category" do
       post :create, category: {:name => 'Test Cat'}
       expect(response).to be_redirect
-    #  expect(page).to have_text('Category was successfully created.')
+      expect(flash[:notice]).to match 'Category was successfully created.'
     end
   end
 end

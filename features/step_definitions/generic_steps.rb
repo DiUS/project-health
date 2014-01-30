@@ -23,14 +23,14 @@ Then(/^I select the "Category" value "(.*?)"$/) do |value|
 end
 
 Then(/^I press "(.*?)"$/) do |button|
-  find_a_button(button).click
+  find_a_submit(button).click
 end
 
 Then(/^I should see "(.*?)"$/) do |message|
   page.should have_content(message)
 end
 
-def find_a_button name
+def find_a_submit name
   begin
     return find_button(name)
   rescue
@@ -42,5 +42,5 @@ end
 def create_category name
   visit '/categories/new'
   fill_in 'Name', with:name
-  find_a_button('Create Category').click
+  find_a_submit('Create Category').click
 end

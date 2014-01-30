@@ -7,6 +7,6 @@ describe Indicator do
   }
 
 	it 'can create indicator' do
-    !Iteration.nil?
+    @category.indicators.include?(@indicator)
   end
 end
