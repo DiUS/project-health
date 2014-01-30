@@ -6,10 +6,10 @@ describe Project do
 	it 'adds a first iteration to project' do
     iteration = project.add_iteration('Iteration 1')
 
-    iteration.sort_order.should eql(1)
-    iteration.name.should eql('Iteration 1')
-    iteration.project.should eql(project)
-    iteration.status.should eql(Iteration::CURRENT)
+    expect(iteration.sort_order).to eql(1)
+    expect(iteration.name).to eql('Iteration 1')
+    expect(iteration.project).to eql(project)
+    expect(iteration.status).to eql(Iteration::CURRENT)
   end
 
   it 'adds a second iteration to project' do
@@ -19,9 +19,9 @@ describe Project do
     iteration1.reload
     iteration2.reload
 
-    iteration1.status.should eql(Iteration::PAST)
-    iteration2.status.should eql(Iteration::CURRENT)
-    iteration2.sort_order.should eql(2)
+    expect(iteration1.status).to eql(Iteration::PAST)
+    expect(iteration2.status).to eql(Iteration::CURRENT)
+    expect(iteration2.sort_order).to eql(2)
   end
 
 end

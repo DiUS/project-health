@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe Indicator do
-  before {
-    @category = FactoryGirl.create :category
-    @indicator = FactoryGirl.create :indicator, category: @category
-  }
+  let(:category) { FactoryGirl.create :category }
+  let(:indicator) { FactoryGirl.create :indicator, category: category }
 
 	it 'can create indicator' do
-    @category.indicators.include?(@indicator)
+    category.indicators.include?(indicator)
   end
 end
