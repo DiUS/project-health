@@ -28,7 +28,7 @@
     <%= f.text_field :five_label %>
   </div>
 
-    <%= f.label :category %><br>
+    <%= f.label :category_id, "Category" %><br>
     <%= select(:indicator, "category_id", Category.all.collect {|cat| [ cat.name, cat.id ] }, {include_blank: ''})%>
 
   <div class="field">

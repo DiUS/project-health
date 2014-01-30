@@ -8,10 +8,10 @@ describe Iteration do
   }
 
 	it 'returns project current iteration' do
-    Iteration.current(@project).should eql(@iteration2)
+    expect(Iteration.current(@project)).to eql(@iteration2)
   end
 
   it 'returns project previous iteration' do
-    Iteration.previous(@project).should eql(@iteration1)
+    expect(Iteration.previous(@project)).to eql(@iteration1)
   end
 end
