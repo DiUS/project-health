@@ -1,4 +1,4 @@
-# project-health ![alt text](https://travis-ci.org/DiUS/project-health.png "Build Status")
+# project-health ![alt text](https://travis-ci.org/DiUS/project-health.png "Build Status") [![Code Climate](https://codeclimate.com/github/DiUS/project-health.png)](https://codeclimate.com/github/DiUS/project-health)
 
 ## Overview
 The purpose of this tool is to help generate discussions during retroscpectives. Team members can submit votes and comment on different aspects of the project such as morale, enthusiasm, management, innovation, technical debt...
