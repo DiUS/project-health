@@ -26,6 +26,6 @@ On Heroku: http://project-health-dius.herokuapp.com
  * Display indicators trend for the last X iterations as a graph
  * Display the overall rating of the project and trend (average of all indicators)
  * Possibility to display the dashboard for previous iterations (like a < previous | next > button)
-* Integration with other systems
+ * Integration with other systems
  * Timesheet to populate projects and users assigned on projects
  * Metrics from other systems (number of commits, continuous integration status reports...)
