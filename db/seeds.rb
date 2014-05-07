@@ -1,3 +1,6 @@
+Indicator.attr_accessible :name, :category, :sort_order
+Iteration.attr_accessible :project, :name, :status, :sort_order
+
 technical = Category.create(name: "Technical")
 process = Category.create(name: "Process")
 team = Category.create(name: "Team")
