@@ -41,4 +41,5 @@ group :test, :development do
   gem 'factory_girl_rails', :require => false
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'debugger'
 end

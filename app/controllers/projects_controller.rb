@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
     Indicator.all.each do |indicator|
 
       present_project_indicator = ProjectIndicator.where("project_id = ? and indicator_id = ?",@project.id,indicator).first
-      if params[indicator.name]
+      if params["indicators"] && params["indicators"].include?(indicator.id.to_s)
         ProjectIndicator.create(project: @project, indicator: indicator) unless present_project_indicator
       else
         if present_project_indicator
