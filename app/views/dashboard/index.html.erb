@@ -1,5 +1,11 @@
-<div class="dashboard">
-  <h2><%= @project.name %> - <%= @iteration.name %></h2>
+<% content_for :for_head do%>
+	<%= javascript_include_tag "//www.google.com/jsapi" %>
+	<script type="text/javascript">
+	  chart_data = <%= @chart_data.to_json.html_safe %>
+	  google.load('visualization', '1.0', {'packages':['corechart']});
+	  google.setOnLoadCallback(drawChart);
+	</script>
+<% end %>
 
 <div class="dashboard">
   <h2> 
@@ -14,6 +20,9 @@
       </ul>
     </span>
   </h2>
+  
+  <div id="chart-container"> </div>
+ 
   <div class="indicators">
     <% @indicator_measures.each_with_index do | measure, index | %>
       <div class="indicator" data-indicator-value="<%= measure.mean %>">

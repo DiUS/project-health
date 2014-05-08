@@ -1,7 +1,8 @@
 class DashboardController < ApplicationController
-  before_action :set_project
 
   def index
+    @project = Project.find(params[:project_id])
+    @chart_data = IndicatorMeasure.trend_for_project(@project)
     @iteration = fetchIteration
     @indicator_measures = IndicatorMeasure.for_iteration(@iteration)
   end
@@ -16,7 +17,4 @@ class DashboardController < ApplicationController
     end
   end
 
-  def set_project
-    @project = Project.find(params[:project_id])
-  end
 end

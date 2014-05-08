@@ -40,7 +40,25 @@ class IndicatorMeasure
         comments: Comment.where(iteration: current_iteration, indicator: project_indicator.indicator).order('id ASC') )
     end
   end
-
+  
+  def self.trend_for_project project
+    iterations = project.iterations;
+    
+    data = []
+    data << ['Iteration', "Rating"]
+    
+    iterations.each { |iteration|
+      rating_row = Rating.select("avg(score) as avg").where(iteration_id: iteration.id)
+      rating_avg = nil
+      if rating_row.length == 1
+        rating_avg = rating_row[0].avg.round(2)
+      end      
+      
+      data << [iteration.name, rating_avg]
+    }
+    return data
+  end
+  
   private 
   
   def calculate_mean(values)
