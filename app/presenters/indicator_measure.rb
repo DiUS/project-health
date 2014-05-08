@@ -26,9 +26,10 @@ class IndicatorMeasure
     end
   end
 
-  def self.for_project(project)
-    current_iteration = Iteration.current(project)
-    previous_iteration = Iteration.previous(project)
+  def self.for_iteration(iteration)
+    project = iteration.project
+    current_iteration = iteration
+    previous_iteration = Iteration.previous_by_iteration(iteration)
     project.project_indicators.map do |project_indicator|
       previous_ratings = Rating.where("iteration_id = ? and indicator_id = ?", previous_iteration.id, project_indicator.indicator.id) if previous_iteration
       current_rating = Rating.where("iteration_id = ? and indicator_id = ?", current_iteration.id, project_indicator.indicator.id) if current_iteration

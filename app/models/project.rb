@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   has_many :indicators, :through => :project_indicators
 
   def add_iteration(name)
-    current_iteration = Iteration.current(self)
+    current_iteration = Iteration.current_by_project(self)
     next_iteration = Iteration.new(name: name)
     next_iteration.project = self
     next_iteration.status = Iteration::CURRENT

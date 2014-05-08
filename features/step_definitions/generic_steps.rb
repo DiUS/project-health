@@ -10,6 +10,22 @@ Given(/^that "(.*?)" exists in categories/) do |name|
   create_category name
 end
 
+Given(/^that "(.*?)" exists in projects/) do |name|
+  create_project name
+end
+
+Given(/^I open the dashboard for "(.*?)"$/) do |project_name|
+  open_project_detail project_name
+  click_link("View Dashboard")
+end
+
+Given(/^the project "(.*?)" has an iteration "(.*?)"$/) do |project_name, iteration_name|
+  open_project_detail project_name
+  fill_in "iteration_name", with:iteration_name
+  find_a_submit("New Iteration").click
+end
+
+
 Then(/^(.*) is displayed$/) do |label|
   expect(page).to have_content(label)
 end
@@ -40,7 +56,24 @@ def find_a_submit name
 end
 
 def create_category name
-  visit '/categories/new'
-  fill_in 'Name', with:name
-  find_a_submit('Create Category').click
+  create_generic_object "categories", "Create Category", { "Name" => name }
+end
+
+def create_project name
+  create_generic_object "projects", "Create Project", { "Name" => name }
+end
+
+def create_generic_object resource_name, submit_name, values
+  visit "/#{resource_name}/new"
+  values.each do | key, value | 
+    fill_in key, with:value
+  end
+  find_a_submit(submit_name).click
+end
+
+
+def open_project_detail project_name
+  visit '/projects'
+  row = find('td', text: project_name).parent
+  row.click_link("Show")
 end

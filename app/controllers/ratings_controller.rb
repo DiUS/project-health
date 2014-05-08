@@ -2,12 +2,12 @@ class RatingsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @project_indicators = ProjectIndicator.joins(:indicator).where("project_id = ?", @project.id).order("indicators.sort_order")
-    @iteration = Iteration.current(@project)
+    @iteration = Iteration.current_by_project(@project)
   end
 
   def create
     project = Project.find(params[:project_id])
-    iteration = Iteration.current(project)
+    iteration = Iteration.current_by_project(project)
     
     indicators = Indicator.find(:all)
     indicators.each do |indicator|

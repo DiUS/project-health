@@ -9,11 +9,11 @@ class Iteration < ActiveRecord::Base
   has_many :ratings
   has_many :comments
 
-  def self.current(project)
+  def self.current_by_project(project)
     Iteration.where(project: project, status: CURRENT).first
   end
 
-  def self.previous(project)
-    Iteration.where(project: project, status: PAST).order('sort_order DESC').first
+  def self.previous_by_iteration(iteration)
+    Iteration.where(project: iteration.project, status: PAST).where("sort_order < ?", iteration.sort_order).order('sort_order DESC').first
   end
 end

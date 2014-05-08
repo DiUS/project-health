@@ -1,6 +1,19 @@
 <div class="dashboard">
   <h2><%= @project.name %> - <%= @iteration.name %></h2>
 
+<div class="dashboard">
+  <h2> 
+    <%= @project.name %> - 
+    <span class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= @iteration.name %> <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <% @project.iterations.each do | iteration | %>
+        <li>
+          <a href="<%= dashboard_index_path(project_id: @project.id, iteration_id: iteration.id) %>"><%= iteration.name %></a>
+        </li>
+        <% end %>
+      </ul>
+    </span>
+  </h2>
   <div class="indicators">
     <% @indicator_measures.each_with_index do | measure, index | %>
       <div class="indicator" data-indicator-value="<%= measure.mean %>">
