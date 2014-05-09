@@ -7,11 +7,14 @@ ProjectWealth::Application.routes.draw do
 
   get "dashboard/index"
   root 'application#index'
+  
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :projects do
     resources :iterations
     resources :dashboard, only: [:index]
     resources :ratings, only: [:index, :create]
     post "update_indicators"
+    post "update_users"
   end
 end

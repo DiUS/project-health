@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy,:update_indicators]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :update_indicators, :update_users]
 
   # GET /projects
   def index
@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
     @iterations = Iteration.where(project_id: @project.id).order("sort_order desc")
     @iteration = Iteration.new
     @indicators = Indicator.all
+    @users = User.all
   end
 
   # GET /projects/new
@@ -49,20 +50,16 @@ class ProjectsController < ApplicationController
   end
 
   def update_indicators
-    Indicator.all.each do |indicator|
-
-      present_project_indicator = ProjectIndicator.where("project_id = ? and indicator_id = ?",@project.id,indicator).first
-      if params["indicators"] && params["indicators"].include?(indicator.id.to_s)
-        ProjectIndicator.create(project: @project, indicator: indicator) unless present_project_indicator
-      else
-        if present_project_indicator
-          present_project_indicator.destroy 
-        end
-      end
-    end
-    redirect_to @project ,notice: 'Project indicators successfully updated'
+    @project.indicators = Indicator.where(id: params["indicators"]);
+    @project.save!
+    redirect_to @project, notice: 'Project indicators successfully updated'
   end
 
+  def update_users
+    @project.users = User.where(id: params["users"]);
+    @project.save!
+    redirect_to @project, notice: 'Project staff successfully updated'
+  end
 
 
   private

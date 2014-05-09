@@ -51,7 +51,7 @@ class IndicatorMeasure
       rating_row = Rating.select("avg(score) as avg").where(iteration_id: iteration.id)
       rating_avg = nil
       if rating_row.length == 1
-        rating_avg = rating_row[0].avg.round(2)
+        rating_avg = rating_row[0].avg.to_i.round(2)
       end      
       
       data << [iteration.name, rating_avg]

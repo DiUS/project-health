@@ -27,6 +27,11 @@ gem 'sass-rails'
 gem 'bootstrap-sass-rails'
 gem 'font-awesome-rails'
 
+# Login
+gem 'omniauth'
+gem "omniauth-google-oauth2"
+
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -42,4 +47,5 @@ group :test, :development do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'debugger'
+  gem 'forgery'
 end

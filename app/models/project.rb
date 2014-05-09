@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :iterations
   has_many :project_indicators
   has_many :indicators, :through => :project_indicators
+  has_and_belongs_to_many :users
 
   def add_iteration(name)
     current_iteration = Iteration.current_by_project(self)

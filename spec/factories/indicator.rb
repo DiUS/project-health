@@ -1,8 +1,10 @@
 require 'factory_girl'
 
 FactoryGirl.define do
+  sequence(:name) {|n| "Indicator #{n}" }
+
 	factory :indicator do
-    initialize_with { Indicator.where(category: category).first_or_initialize }
-    name 'indicator 1'
+    name
+    category
   end
 end
