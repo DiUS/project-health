@@ -14,7 +14,7 @@
       <ul class="dropdown-menu">
         <% @project.iterations.each do | iteration | %>
         <li>
-          <a href="<%= dashboard_index_path(project_id: @project.id, iteration_id: iteration.id) %>"><%= iteration.name %></a>
+          <a href="<%= project_dashboard_index_path(project_id: @project.id, iteration_id: iteration.id) %>"><%= iteration.name %></a>
         </li>
         <% end %>
       </ul>

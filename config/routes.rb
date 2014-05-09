@@ -5,7 +5,6 @@ ProjectWealth::Application.routes.draw do
   resources :categories
   resources :indicators
 
-  get "dashboard/index"
   root 'application#index'
   
   get '/auth/:provider/callback', to: 'sessions#create'
