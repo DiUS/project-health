@@ -1,15 +1,5 @@
 <%= form_for(@indicator,html: {class: "form-horizontal"}) do |f| %>
-  <% if @indicator.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@indicator.errors.count, "error") %> prohibited this indicator from being saved:</h2>
-
-      <ul>
-      <% @indicator.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render(:partial => "shared/error_pane", :locals => {object: @indicator})%>
 
   <div class="field">
     <%= f.label :name %>

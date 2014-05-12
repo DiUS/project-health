@@ -1,6 +1,6 @@
 <h1>Project health</h1>
 
-<% if @pending_ratings  %>
+<% unless @pending_ratings.empty?  %>
 	<div class="panel panel-warning">
 		<div class="panel-heading">
 			Pending ratings

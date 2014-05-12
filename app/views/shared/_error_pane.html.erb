@@ -1,0 +1,16 @@
+<% if object.errors.any? %>
+	<div class="panel panel-danger">
+		<div class="panel-heading">Verification error</div>
+		<div class="panel-body">
+			<%= pluralize(object.errors.count, "error") %> prohibited this object from being saved:
+		
+			<ul>
+				<% object.errors.full_messages.each do |msg| %>
+					<li>
+						<%= msg %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>

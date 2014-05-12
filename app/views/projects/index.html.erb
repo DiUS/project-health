@@ -5,9 +5,6 @@
     <tr>
       <th>Name</th>
       <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -15,10 +12,12 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= link_to 'Dashboard', project_dashboard_index_path(project) %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="actions">
+        	<%= link_to 'Dashboard', project_dashboard_index_path(project), class: "dashboard" %>
+        	<%= link_to 'Show', project, class:"detail" %>
+        	<%= link_to 'Edit', edit_project_path(project), class:"edit" %>
+        	<%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class:"destroy" %>
+    	</td>
       </tr>
     <% end %>
   </tbody>
@@ -26,6 +25,4 @@
 
 <br>
 
-<%= link_to new_project_path, html_options = {class: "btn"} do %>
-  <i class="fa fa-plus">New Project</i>
-<% end %>
+<%= link_to "New Project", new_project_path, html_options = {class: "new"} %>

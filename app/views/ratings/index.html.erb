@@ -1,54 +1,23 @@
-<div id="rating" class="splash">
   <h2>
     Ratings for <%= @iteration.name %>
  </h2>
 
   <%= form_tag(project_ratings_path(project_id: @project.id)) do%>
-    <div class="row">
-    	<% @project_indicators.each do |project_indicator| %>
-        <% indicator = project_indicator.indicator%>
-    		<div class="indicator unrated">
-          <div class="row name">
-            <span class="indicator-name"><%= indicator.name %></span>
-            <button type="button" class="btn btn-primary comment-button" data-toggle="modal" data-target="#comment-<%= indicator.id %>">
-              <i class="fa fa-comment"></i>
-            </button>
-          </div>
-          <div class="row score">
-            <div class="indicator-excluded">
-              <i class="fa fa-ban"></i>No vote
-            </div>
-            <div class="indicator-slider"><%= text_field_tag("scores[#{indicator.id}]", '', :class => "slider") %></div>
-          </div>
-
-          <div class="modal fade" id="comment-<%= indicator.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Add a comment</h4>
-                </div>
-                <div class="modal-body">
-                  <%= text_area_tag("comments[#{indicator.id}]", '', :class => "indicator-comment") %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="cancel-comment btn btn-default">Cancel</button>
-                  <button type="button" class="save-comment btn btn-primary">Add</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-    		</div>
-    	<% end %>
-    </div>
-
-    <div class="row">&nbsp;</div>
-
-    <div class="row">
-      <div class="rating-action">
-        <%= submit_tag('Vote', :class => "btn btn-lg btn-primary btn-block") %>
-      </div>
-    </div>
+  
+  	<% @indicators_by_category.each_pair do |category,indicators| %>
+	  	<%= field_set_tag category.name do %>
+	  		<% indicators.each do |indicator| %>
+	  			<div class="field">
+	  				<%= label_tag indicator.name%>
+	  				<% unless indicator.description.to_s.empty? %>
+	  					<p><%= indicator.description %></p>
+  					<% end %>
+	  				<%= text_field_tag("scores[#{indicator.id}]", '', :class => "rating", :type => "number", "data-clearable" => "remove", "data-max" => "5", "data-min" => "1") %>
+	  				<%= text_area_tag("comments[#{indicator.id}]", '', :class => "indicator-comment", :placeholder => "Comments") %>
+	  			</div>
+	  		<% end %>
+		<% end %>
+	<% end %>
+	
+    <%= submit_tag('Vote') %>
   <% end %>
-</div>

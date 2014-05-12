@@ -17,9 +17,11 @@
       <tr>
         <td><%= iteration.name %></td>
         <td><%= iteration.status %></td>
-        <td><%= link_to 'Show', iteration %></td>
-        <td><%= link_to 'Edit', edit_iteration_path(iteration) %></td>
-        <td><%= link_to 'Destroy', iteration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="actions">
+        	<%= link_to 'Show', iteration, class:"detail" %>
+        	<%= link_to 'Edit', edit_iteration_path(iteration), class:"edit" %>
+        	<%= link_to 'Destroy', iteration, method: :delete, data: { confirm: 'Are you sure?' }, class:"destroy" %>
+    	</td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Iteration', new_iteration_path %>
+<%= link_to 'New Iteration', new_iteration_path, class:"new" %>

@@ -2,13 +2,9 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th><abbr title="Sort Order">Odr</abbr></th>
 			<th>Name</th>
 			<th>Description</th>
-			<th>One label</th>
-			<th>Five label</th>
-			<th>Sort order</th>
-			<th></th>
-			<th></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -16,17 +12,17 @@
 	<tbody>
 		<% @indicators.each do |indicator| %>
 		<tr>
+			<td><%= indicator.sort_order %></td>
 			<td><%= indicator.name %></td>
 			<td><%= indicator.description %></td>
-			<td><%= indicator.one_label %></td>
-			<td><%= indicator.five_label %></td>
-			<td><%= indicator.sort_order %></td>
-			<td><%= link_to 'Show', indicator %></td>
-			<td><%= link_to 'Edit', edit_indicator_path(indicator) %></td>
-			<td><%= link_to 'Destroy', indicator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td class="actions">
+				<%= link_to 'Show', indicator, class:"detail" %>
+				<%= link_to 'Edit', edit_indicator_path(indicator), class:"edit" %>
+				<%= link_to 'Destroy', indicator, method: :delete, data: { confirm: 'Are you sure?' }, class:"destroy" %>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<%= link_to 'New Indicator', new_indicator_path, html_options = {class: "btn"}%>
+<%= link_to 'New Indicator', new_indicator_path, html_options = {class: "new"}%>

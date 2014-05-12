@@ -6,22 +6,6 @@ $light: #F6F6E8;
 $medium: #a0a0af;
 $dark: #404040;
 
-@mixin fg_bg($fg, $bg){ 
-    color: $fg; 
-    background-color: $bg; 
-}
-@mixin lt_with_bg($bg){ 
-    @include shadow;
-    @include fg_bg($light, $bg);
-}
-
-@mixin unrated { @include fg_bg($dark, $medium); }
-@mixin deathly {  @include lt_with_bg($dark); }
-@mixin ill {  @include lt_with_bg($red); }
-@mixin fine {  @include lt_with_bg($medium); }
-@mixin good {  @include fg_bg($dark, $blue); }
-@mixin healthy {  @include lt_with_bg($green); }
-
 @mixin shadow {
     text-shadow: 1px 1px $dark;
 }
@@ -45,11 +29,4 @@ $dark: #404040;
   }
 }
 
-
-.unrated { @include unrated; }
-.deathly { @include deathly; }
-.ill { @include ill; }
-.fine { @include fine; }
-.good { @include good; }
-.healthy { @include healthy; }
 

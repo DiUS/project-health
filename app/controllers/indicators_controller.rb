@@ -3,7 +3,7 @@ class IndicatorsController < ApplicationController
 
   # GET /indicators
   def index
-    @indicators = Indicator.all
+    @indicators = Indicator.all()
   end
 
   # GET /indicators/1

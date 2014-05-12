@@ -14,8 +14,60 @@ form {
   
   input[type=submit] {
     @extend .btn;
-    @extend .btn-defaults;
+    @extend .btn-default;
   }
 }
 
+.well > h3 {
+  margin-top:0px;
+}
+
+fieldset {
+  margin-bottom: 15px;
+}
+
+legend {
+  margin-bottom: 7px;
+}
+
+.radio-inline, .checkbox-inline,
+.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline{
+  margin-left: 0px;
+  margin-right: 20px;
+}
+
+td.actions {
+  text-align: right;
+  
+  a {
+    padding-left: 4px;
+    white-space:nowrap;
+  }
+}
+
+.my-glyphicon {
+  @extend .glyphicon;
+  padding-right: 3px;
+}
+
+a.new:before {
+  @extend .glyphicon-plus:before;
+  @extend .my-glyphicon; 
+}
+a.edit:before {
+  @extend .glyphicon-edit:before;
+  @extend .my-glyphicon;
+}
+a.destroy:before {
+  @extend .glyphicon-remove-circle:before;
+  @extend .my-glyphicon;
+}
+a.dashboard:before {
+  @extend .glyphicon-dashboard:before;
+  @extend .my-glyphicon;
+}
+a.detail:before {
+  @extend .glyphicon-th-list:before;
+  @extend .my-glyphicon;
+}
 

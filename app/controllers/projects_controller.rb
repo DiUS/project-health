@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
     @iterations = Iteration.where(project_id: @project.id).order("sort_order desc")
     @iteration = Iteration.new
     @indicators = Indicator.all
+    @indicators_by_category = @indicators.group_by &:category
     @users = User.all
   end
 

@@ -2,7 +2,8 @@ class RatingsController < ApplicationController
   before_filter :load
   
   def index
-    @project_indicators = ProjectIndicator.joins(:indicator).where("project_id = ?", @project.id).order("indicators.sort_order")
+    indicators = @project.indicators(order: :sort_order)
+    @indicators_by_category = indicators.group_by &:category
     
     if has_user_voted_yet?
       render 'already_voted'
@@ -12,25 +13,24 @@ class RatingsController < ApplicationController
   def create
     if has_user_voted_yet?
       render 'already_voted'
-      return
-    end
-    
-    indicators = @project.indicators
-    indicators.each do |indicator|
-      score = params[:scores]["#{indicator.id}"]
-      score = nil if score == "0"
-      Rating.create(iteration: @iteration, indicator: indicator, score: score)
-
-      message = params[:comments]["#{indicator.id}"]
-      unless message.blank?
-        Comment.create(iteration: @iteration, indicator: indicator, comment: message)
+    else
+      indicators = @project.indicators
+      indicators.each do |indicator|
+        score = params[:scores]["#{indicator.id}"]
+        score = nil if score == "0"
+        Rating.create(iteration: @iteration, indicator: indicator, score: score)
+  
+        message = params[:comments]["#{indicator.id}"]
+        unless message.blank?
+          Comment.create(iteration: @iteration, indicator: indicator, comment: message)
+        end
       end
+      
+      current_user.voted_for @iteration
+      
+      flash[:message] = "Vote submitted"
+      redirect_to project_dashboard_index_path(project_id: @project.id)
     end
-    
-    current_user.voted_for @iteration
-    
-    flash[:message] = "Vote submitted"
-    redirect_to project_dashboard_index_path(project_id: @project.id)
   end
   
   def already_voted
