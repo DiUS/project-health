@@ -12,27 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :one_label %><br>
+    <%= f.label :one_label %>
     <%= f.text_field :one_label %>
   </div>
   <div class="field">
-    <%= f.label :five_label %><br>
+    <%= f.label :five_label %>
     <%= f.text_field :five_label %>
   </div>
 
-    <%= f.label :category_id, "Category" %><br>
+  <div class="field">	
+    <%= f.label :category_id, "Category" %>
     <%= select(:indicator, "category_id", Category.all.collect {|cat| [ cat.name, cat.id ] }, {include_blank: ''})%>
+  </div>
 
   <div class="field">
-    <%= f.label :sort_order %><br>
+    <%= f.label :sort_order %>
     <%= f.number_field :sort_order %>
   </div>
   <div class="actions">

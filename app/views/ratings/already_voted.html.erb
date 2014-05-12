@@ -1,7 +1,9 @@
-<div class="panel panel-default">
+
+<div class="panel panel-danger">
+	<div class="panel-heading">
+		You already voted for this iteration.
+	</div>
   <div class="panel-body">
-    <p>You already voted for this iteration.</p>
-    
     <%= link_to "Open Dashboard",
     	project_dashboard_index_path(@project),
     	html_options = {class: "btn  btn-primary dashboard-link"} %>

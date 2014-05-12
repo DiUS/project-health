@@ -24,12 +24,15 @@ gem 'd3js-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'font-awesome-rails'
 
 # Login
 gem 'omniauth'
 gem "omniauth-google-oauth2"
+
+gem 'simple-navigation'
+gem 'simple-navigation-bootstrap'
 
 
 group :production do

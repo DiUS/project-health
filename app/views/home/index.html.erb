@@ -1,0 +1,30 @@
+<h1>Project health</h1>
+
+<% if @pending_ratings  %>
+	<div class="panel panel-warning">
+		<div class="panel-heading">
+			Pending ratings
+		</div>
+		<div class="list-group">
+			<% @pending_ratings.each do |project| %>
+		  		<a href="<%= project_ratings_path(project) %>" class="list-group-item">
+			    	<h4 class="list-group-item-heading"><%= project.name %> <small><%= project.current_iteration.name %></small></h4>
+		  		</a>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		My projects
+	</div>
+	<div class="list-group">
+		<% @my_projects.each do |project| %>
+			<a href="<%= project_dashboard_index_path(project) %>" class="list-group-item">
+		    	<h4 class="list-group-item-heading"><%= project.name %></h4>
+			</a>
+		<% end %>
+	</div>
+</div>
+

@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_filter :load, :check_login
+  before_filter :load
   
   def index
     @project_indicators = ProjectIndicator.joins(:indicator).where("project_id = ?", @project.id).order("indicators.sort_order")
@@ -42,10 +42,6 @@ class RatingsController < ApplicationController
   def load
     @project = Project.find(params[:project_id])
     @iteration = Iteration.current_by_project(@project)
-  end
-  
-  def check_login
-    redirect_to SessionsHelper.login_path unless current_user
   end
   
   def has_user_voted_yet?

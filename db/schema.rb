@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508053639) do
+ActiveRecord::Schema.define(version: 20140512012751) do
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140508053639) do
   create_table "ratings", force: true do |t|
     t.integer "iteration_id"
     t.integer "indicator_id"
-    t.integer "score"
+    t.decimal "score"
   end
 
   add_index "ratings", ["indicator_id"], name: "index_ratings_on_indicator_id"

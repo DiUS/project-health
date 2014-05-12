@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Project Health</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  
-  <% if content_for? :for_head %>
-    <%= yield :for_head %>
-  <% end %>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-</head>
-<body>
+	<head>
+		<title>Project Health</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
 
-<%= yield %>
+		<% if content_for? :for_head %>
+		<%= yield :for_head %>
+		<% end %>
 
-</body>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body>
+
+		<div class="container">
+			<%= render_navigation :expand_all => true %>
+ 
+			<%= yield %>
+		</div>
+
+	</body>
 </html>

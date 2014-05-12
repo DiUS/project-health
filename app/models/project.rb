@@ -25,4 +25,8 @@ class Project < ActiveRecord::Base
   def project_has_indicator(passed_indicator)
     project_indicators.any? {|project_indicator| project_indicator.indicator == passed_indicator}
   end
+  
+  def current_iteration
+    return Iteration.current_by_project self
+  end
 end

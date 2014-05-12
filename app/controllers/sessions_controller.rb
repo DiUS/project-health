@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
   end
 
   protected
+  def requires_login
+    return false
+  end
 
   def auth_hash
     request.env['omniauth.auth']
