@@ -37,6 +37,11 @@ class RatingsController < ApplicationController
     
   end
   
+  protected
+  def requires_login
+    return true
+  end
+  
   private
   
   def load

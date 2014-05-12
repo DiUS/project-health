@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def requires_login
-    return true
+    return false
   end
   
   private
