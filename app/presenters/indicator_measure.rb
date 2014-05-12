@@ -2,6 +2,8 @@ class IndicatorMeasure
   attr_reader :name
   attr_reader :ratings
   attr_reader :comments
+  attr_reader :indicator_id
+  attr_reader :category
 
   def initialize(map = {})
     map.each do |key, value| 
@@ -34,6 +36,8 @@ class IndicatorMeasure
       previous_ratings = Rating.where("iteration_id = ? and indicator_id = ?", previous_iteration.id, project_indicator.indicator.id) if previous_iteration
       current_rating = Rating.where("iteration_id = ? and indicator_id = ?", current_iteration.id, project_indicator.indicator.id) if current_iteration
       new( 
+        category: project_indicator.indicator.category.name,
+        indicator_id: project_indicator.indicator.id,
         name: project_indicator.indicator.name,
         ratings: current_rating,
         previous_ratings: previous_ratings,

@@ -24,29 +24,36 @@
   <div id="chart-container"> </div>
  
   <div class="indicators">
-    <% @indicator_measures.each_with_index do | measure, index | %>
-      <div class="indicator" data-indicator-value="<%= measure.mean %>">
-        <span class="title">
-          <%= measure.name %>
-        </span>
-
-        <span class="mean">
-          <%= '%.2f' % measure.mean if measure.mean %> 
-          <i class="fa <%= measure.delta %>"></i>
-        </span>
-
-        <% if measure.comments.length > 0 %>
-          <a href="#" class="comments btn btn-default btn-mini badge badge-warning" data-toggle="modal" data-target="#comment-<%= index %>">
-            <i class="fa fa-comment"><%= measure.comments.length %></i>
-          </a>
-        <% end %>
-      </div>
+    <% @indicator_measures.group_by(&:category).each_pair do | category, measures | %>
+    
+      <div class="indicator-group">
+      <h3><%= category %></h3>
+      <% measures.each do | measure | %>
+	      <div class="indicator" data-indicator-value="<%= measure.mean %>">
+	        <span class="title">
+	          <%= measure.name %>
+	        </span>
+	
+	        <span class="mean">
+	          <%= '%.2f' % measure.mean if measure.mean %> 
+	          <i class="fa <%= measure.delta %>"></i>
+	        </span>
+	
+	        <% if measure.comments.length > 0 %>
+	          <a href="#" class="comments btn btn-default btn-mini badge badge-warning" data-toggle="modal" data-target="#comment-<%= measure.indicator_id %>">
+	            <i class="fa fa-comment"><%= measure.comments.length %></i>
+	          </a>
+	        <% end %>
+	      </div>
+	    <% end %>
+	    <div class="clearfix"> </div>
+	    </div>
     <% end %>
   </div>
 </div>
 
-<% @indicator_measures.each_with_index do | measure, index | %>
-  <div class="modal fade" id="comment-<%= index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<% @indicator_measures.each do | measure | %>
+  <div class="modal fade" id="comment-<%= measure.indicator_id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
