@@ -30,4 +30,9 @@ ProjectWealth::Application.configure do
 
   # eager load all registered namespaces
   config.eager_load = false
+  
+  unless Rails.env.production?
+    ENV["GOOGLE_CLIENT_ID"] = "676829387040.apps.googleusercontent.com"
+    ENV["GOOGLE_CLIENT_SECRET"] = "p7YXYV4031t4DZCYywGBAzej"
+  end
 end
