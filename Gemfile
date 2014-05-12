@@ -34,6 +34,8 @@ gem "omniauth-google-oauth2"
 gem 'simple-navigation'
 gem 'simple-navigation-bootstrap'
 
+gem 'newrelic_rpm'
+
 
 group :production do
   gem 'pg'
