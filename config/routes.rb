@@ -5,10 +5,11 @@ ProjectWealth::Application.routes.draw do
   resources :categories
   resources :indicators
 
-  root 'application#index'
-  get '/home/index'
+  root 'home#index'
+  get '/home/', to: "home#index"
   
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/sessions/destroy'
 
   resources :projects do
     resources :iterations

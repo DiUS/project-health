@@ -15,7 +15,7 @@
 	<body>
 
 		<div class="container">
-			<%= render_navigation :expand_all => true %>
+			<%= render_navigation :expand_all => true, &menu %>
  
 			<%= yield %>
 		</div>
