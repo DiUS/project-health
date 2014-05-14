@@ -1,8 +1,8 @@
-Given(/^user opens the new (\w*) page$/) do |page_name|
+Given(/^I open the new (\w*) page$/) do |page_name|
   visit '/' + page_name + "/new"
 end
 
-Given(/^user opens the (\w*) page$/) do |page_name|
+Given(/^I open the (\w*) page$/) do |page_name|
   visit '/' + page_name
 end
 
@@ -42,8 +42,25 @@ Then(/^I press "(.*?)"$/) do |button|
   find_a_submit(button).click
 end
 
-Then(/^I should see "(.*?)"$/) do |message|
+Then(/^I check "(.*?)"$/) do |checkbox|
+  page.check(checkbox)
+end
+
+Then(/^I should see "([^"]*?)"$/) do |message|
   page.should have_content(message)
+end
+
+Then(/^I should not see "([^"]*?)"$/) do |message|
+  page.should have_no_content(message)
+end
+
+Then(/^I should see "([^"]*)" in panel "([^"]*)"$/) do |message, panel_title|
+  panel = find('div.panel-heading', text: panel_title).parent
+  panel.should have_content(message)
+end
+
+Then(/^I should not see the panel "([^"]*)"$/) do |panel_title|
+  page.should have_no_selector('div.panel-heading', text: panel_title)
 end
 
 def find_a_submit name

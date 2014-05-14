@@ -21,18 +21,18 @@ class IterationsController < ApplicationController
 
   # POST /iterations
   def create
-    @project = Project.find(params[:project_id])
-    if @project.add_iteration(iteration_params[:name])
-      redirect_to project_path(@project), notice: 'iteration was successfully created.'
+    @iteration = Iteration.new(iteration_params)
+    if @iteration.save
+      redirect_to project_path(@iteration.project), notice: 'Iteration was successfully created.'
     else
-      redirect_to project_path(@project), notice: 'iteration was not sucsessfully created.'
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /iterations/1
   def update
     if @iteration.update(iteration_params)
-      redirect_to @iteration, notice: 'iteration was successfully updated.'
+      redirect_to @iteration, notice: 'Iteration was successfully updated.'
     else
       render action: 'edit'
     end
@@ -52,6 +52,6 @@ class IterationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def iteration_params
-      params.require(:iteration).permit(:name, :status, :sort_order,:project_id)
+      params.require(:iteration).permit(:name, :status, :sort_order, :project_id)
     end
 end

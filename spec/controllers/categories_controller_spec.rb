@@ -1,22 +1,11 @@
 require 'spec_helper'
 
 describe CategoriesController do
-  describe "GET #index" do
-    it "responds successfully with an HTTP 200 status code" do
-      get :index
-      expect(response).to be_success
-      expect(response.status).to eq(200)
-    end
-
-    it "renders the index template" do
-      get :index
-      expect(response).to render_template("index")
-    end
-
-    it "can create a new category" do
-      post :create, category: {:name => 'Test Cat'}
-      expect(response).to be_redirect
-      expect(flash[:notice]).to match 'Category was successfully created.'
-    end
+  it_behaves_like "a CRUD controller" do
+    let(:object_instance) {FactoryGirl.create :category}
+    let(:class_object) {Category}
+    let(:object_type) {:category}
+    let(:valid_attributes) {{:name => "Test Category"}}
+    let(:invalid_attributes) {{:name => ""}}
   end
 end

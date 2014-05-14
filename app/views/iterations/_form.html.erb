@@ -2,6 +2,10 @@
   <%= render(:partial => "shared/error_pane", :locals => {object: @iteration})%>
 
   <div class="field">
+    <%= f.label :project_id, "Project" %>
+    <%= select(:iteration, "project_id", Project.all.collect {|project| [ project.name, project.id ] }, {include_blank: ''})%>
+  </div>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>

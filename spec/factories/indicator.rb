@@ -1,10 +1,10 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  sequence(:name) {|n| "Indicator #{n}" }
+  sequence(:indicator_name) {|n| "Indicator #{n}" }
 
 	factory :indicator do
-    name
+    name FactoryGirl.generate :indicator_name
     category
   end
 end

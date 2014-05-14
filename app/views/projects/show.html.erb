@@ -74,6 +74,7 @@
     <%= form_for([@project, @iteration]) do |f| %>
           <%= f.label :name %>
           <%= f.text_field :name %>
+          <%= f.hidden_field :project_id, :value => @project.id %>
           <%= f.submit "New Iteration", class: "btn btn-large btn-primary" %>
     <% end %>
 

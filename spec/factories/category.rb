@@ -1,8 +1,9 @@
 require 'factory_girl'
 
 FactoryGirl.define do
+  sequence(:category_name) {|n| "Category #{n}" }
+
   factory :category do
-    initialize_with { Category.where(name: name).first_or_initialize }
-    name 'New Category'
+    name FactoryGirl.generate :category_name
   end
 end
