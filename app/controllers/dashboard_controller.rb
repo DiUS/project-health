@@ -2,9 +2,14 @@ class DashboardController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @chart_data = IndicatorMeasure.trend_for_project(@project)
     @iteration = fetchIteration
-    @indicator_measures = IndicatorMeasure.for_iteration(@iteration)
+
+    @chart_data = IndicatorMeasure.trend_for_project(@project) if @iteration
+    @indicator_measures = IndicatorMeasure.for_iteration(@iteration) if @iteration
+
+    unless @iteration
+      render "not_enough_data"
+    end
   end
   
   private
