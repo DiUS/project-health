@@ -1,6 +1,7 @@
 class Iteration < ActiveRecord::Base
   validates :name, presence: true
   validates :project_id, presence: true
+  validates :sort_order, numericality: { only_integer: true, :allow_blank => true }
   attr_accessible :name, :project, :project_id, :status, :sort_order
 
   CURRENT = 'current'

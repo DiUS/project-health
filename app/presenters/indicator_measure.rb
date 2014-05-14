@@ -46,7 +46,7 @@ class IndicatorMeasure
   end
   
   def self.trend_for_project project
-    iterations = project.iterations;
+    iterations = project.iterations.order(:sort_order);
     
     data = []
     data << ['Iteration', "Rating"]
