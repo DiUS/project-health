@@ -13,6 +13,10 @@ describe ProjectsController do
     let(:invalid_attributes) {{:name => ""}}
   end
 
+  before :each do
+    mock_login(FactoryGirl.create :user)
+  end
+
   describe "POST update_users" do
     it "links users" do
       post :update_users, project_id:project.id, users:[user.id]

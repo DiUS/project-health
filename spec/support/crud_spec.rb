@@ -3,6 +3,10 @@ require 'rspec'
 shared_examples 'a CRUD controller' do
   render_views
 
+  before :each do
+    mock_login(FactoryGirl.create :user)
+  end
+
   describe "POST #destroy" do
     it "removes object from database" do
       object_instance.save!

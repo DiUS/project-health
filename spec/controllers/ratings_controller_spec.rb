@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RatingsController do
   let(:project) {FactoryGirl.create :project, indicators: [indicator1, indicator2]}
-  let!(:iteration) {FactoryGirl.create :iteration, project: project, status: Iteration::CURRENT }
+  let!(:iteration) {FactoryGirl.create :iteration, project: project }
   let(:user) {FactoryGirl.create :user}
   let(:indicator1) {FactoryGirl.create :indicator}
   let(:indicator2) {FactoryGirl.create :indicator}
@@ -18,31 +18,45 @@ describe RatingsController do
 
     context "logged in" do
       before :each do
-        mock_login
+        mock_login user
       end
-      
-      context "not voted yet" do
-        it "renders voting page" do
-          expect(subject).to render_template("index")
+
+      context "not assigned to the project"
+        it "redirects to start page" do
+          expect(subject).to redirect_to root_path
         end
-      end
-      
-      context "already voted" do
+
+      context "assigned to the project" do
         before :each do
-          user.voted_for iteration
+          project.users = [user]
+          project.save!
         end
-        
-        it "renders already voted page" do
-          expect(subject).to render_template("already_voted")
+
+        context "not voted yet" do
+          it "renders voting page" do
+            expect(subject).to render_template("index")
+          end
+        end
+
+        context "already voted" do
+          before :each do
+            user.voted_for iteration
+          end
+
+          it "renders already voted page" do
+            expect(subject).to render_template("already_voted")
+          end
         end
       end
     end
   end
   
   describe "POST create" do
-    context "logged in" do
+    context "logged in and assigned" do
       before :each do
-        mock_login
+        mock_login user
+        project.users = [user];
+        project.save!
       end
       
       it "save ratings" do
@@ -57,11 +71,5 @@ describe RatingsController do
         expect(CompletedUserVote.where(user: user, iteration:iteration).count).to eq(1)
       end
     end
-  end
-  
-  private
-  def mock_login
-    session.stub(:[]).with(anything).and_call_original
-    session.stub(:[]).with(:user_id).and_return user.id
   end
 end

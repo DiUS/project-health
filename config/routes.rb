@@ -9,6 +9,7 @@ ProjectWealth::Application.routes.draw do
   get '/home/', to: "home#index"
   
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/sessions/create'
   get '/sessions/destroy'
 
   resources :projects do

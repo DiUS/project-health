@@ -2,6 +2,9 @@ Feature:Projects
   In order to do any kind of testing I need to verify that Cucumber can run
   A user Should be able to open the project
 
+  Background:
+    Given I am logged in as "Steve"
+
   Scenario: user opens the projects
     Given I open the projects page
     Then Listing projects is displayed

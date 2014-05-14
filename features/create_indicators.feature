@@ -2,6 +2,9 @@ Feature: Create  indicators
   to try and get some more basic tests happening
   I am trying to test creating a indicator
 
+  Background:
+    Given I am logged in as "Steve"
+
   Scenario: user creates a category
     Given I open the new categories page
     Then New category is displayed

@@ -1,4 +1,4 @@
-When(/^I log in as "(.*?)"$/) do |first_name|
+When(/^I am logged in as "(.*?)"$/) do |first_name|
   omniauthhash = FactoryGirl.build :omniauth_hash
   omniauthhash[:info][:first_name] = first_name;
   
