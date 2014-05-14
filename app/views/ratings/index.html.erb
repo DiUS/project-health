@@ -12,7 +12,7 @@
 	  				<% unless indicator.description.to_s.empty? %>
 	  					<p><%= indicator.description %></p>
   					<% end %>
-	  				<%= text_field_tag("scores[#{indicator.id}]", '', :class => "rating", :type => "number", "data-clearable" => "remove", "data-max" => "5", "data-min" => "1") %>
+	  				<%= text_field_tag("scores[#{indicator.id}]", '', :class => "rating", :type => "number", "data-clearable" => "&nbsp;", "data-max" => "5", "data-min" => "1") %>
 	  				<%= text_area_tag("comments[#{indicator.id}]", '', :class => "indicator-comment", :placeholder => "Comments") %>
 	  			</div>
 	  		<% end %>
