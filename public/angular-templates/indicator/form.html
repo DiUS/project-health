@@ -1,0 +1,39 @@
+<div class="panel panel-danger" ng-if="errors && errors.length>0">
+    <div class="panel-heading">Verification error</div>
+    <div class="panel-body">
+        <ul>
+            <li ng-repeat="error in errors">
+                {{error}}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<form accept-charset="UTF-8" ng-submit="save()">
+    <div class="field">
+        <label for="indicator_name">Name</label>
+        <input id="indicator_name" name="indicator[name]" type="text" ng-model="indicator.name" />
+    </div>
+    <div class="field">
+        <label for="indicator_description">Description</label>
+        <textarea id="indicator_description" name="indicator[description]" ng-model="indicator.description"></textarea>
+    </div>
+
+    <div class="field">
+        <label for="indicator_category_id">Category</label>
+        <select id="indicator_category_id" ng-model="indicator.category_id" name="indicator[category_id]">
+            <option value=""></option>
+            <option value="1">Technical</option>
+            <option value="2">Process</option>
+            <option value="3">Team</option></select>
+    </div>
+
+    <div class="field">
+        <label for="indicator_sort_order">Sort order</label>
+        <input id="indicator_sort_order" name="indicator[sort_order]" type="number" ng-model="indicator.sort_order" />
+    </div>
+    <div class="actions">
+        <input name="commit" type="submit" value="Update Indicator" />
+    </div>
+</form>
+

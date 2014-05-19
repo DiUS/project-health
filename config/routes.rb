@@ -1,5 +1,4 @@
 ProjectWealth::Application.routes.draw do
-
   resources :iterations
   resources :projects
   resources :categories
@@ -12,6 +11,8 @@ ProjectWealth::Application.routes.draw do
   get '/sessions/create'
   get '/sessions/destroy'
 
+  get '/indicators_angular/index'
+
   resources :projects do
     resources :iterations
     resources :dashboard, only: [:index]
@@ -19,4 +20,9 @@ ProjectWealth::Application.routes.draw do
     post "update_indicators"
     post "update_users"
   end
+
+  namespace :api do
+    resources :indicators
+  end
+
 end

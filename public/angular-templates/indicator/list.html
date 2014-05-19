@@ -1,0 +1,26 @@
+<h1>Listing indicators</h1>
+<table>
+    <thead>
+    <tr>
+        <th><abbr title="Sort Order">Odr</abbr></th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="indicator in indicators">
+        <td>{{indicator.sort_order}}</td>
+        <td>{{indicator.name}}</td>
+        <td>{{indicator.description}}</td>
+        <td class="actions">
+            <a href="#/indicators/{{indicator.id}}" class="detail">Detail</a>
+            <a href="#/indicators/{{indicator.id}}/edit" class="edit">Edit</a>
+            <a ng-confirm-link="Are you sure?" class="destroy">Destroy</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="#/indicators/new" class="new">New Indicator</a>

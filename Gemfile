@@ -16,6 +16,9 @@ gem 'cloudinary'
 gem 'browser'
 gem 'devise'
 gem 'jquery-rails'
+gem 'underscore-rails'
+
+gem 'angular_rails_csrf'
 
 # Use angular as the JavaScript library
 gem 'angularjs-rails'
@@ -54,4 +57,5 @@ group :test, :development do
   gem 'forgery'
   gem "ruby-debug-ide"
   gem "debase"
+  gem "jasmine"
 end

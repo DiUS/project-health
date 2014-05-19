@@ -1,8 +1,12 @@
 //= require jquery
 //= require jquery_ujs
-//= require unstable/angular
-//= require unstable/angular-resource
+//= require angular
+//= require angular-route
+//= require angular-resource
+//= require angular-mocks
+//= require underscore
 //= require bootstrap
 //= require ng-rails-csrf
 //= require d3
+//= require angular/main
 //= require_tree .
