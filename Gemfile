@@ -53,6 +53,7 @@ group :test, :development do
   gem 'factory_girl', :require => false
   gem 'factory_girl_rails', :require => false
   gem 'cucumber-rails', :require => false
+  gem "codeclimate-test-reporter", require: false
   gem 'database_cleaner'
   gem 'forgery'
   gem "ruby-debug-ide"

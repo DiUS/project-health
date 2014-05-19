@@ -8,7 +8,9 @@ require 'simplecov'
 require 'simplecov-rcov'
 
 require 'factory_girl'
+require "codeclimate-test-reporter"
 
+CodeClimate::TestReporter.start
 SimpleCov.start :rails
 
 # Requires supporting ruby files with custom matchers and macros, etc,

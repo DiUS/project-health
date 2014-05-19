@@ -8,3 +8,6 @@ deploy:
   app: dius-project-health
   on:
     repo: DiUS/project-health
+addons:
+  code_climate:
+    repo_token: 441be5b8ec410caad3febaedee90bd2ac8dca508d574770786e57ca57e667edc
