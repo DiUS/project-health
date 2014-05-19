@@ -10,14 +10,14 @@
     </thead>
 
     <tbody>
-    <tr ng-repeat="indicator in indicators">
+    <tr ng-repeat="indicator in indicators | orderBy:'sort_order'">
         <td>{{indicator.sort_order}}</td>
         <td>{{indicator.name}}</td>
         <td>{{indicator.description}}</td>
         <td class="actions">
             <a href="#/indicators/{{indicator.id}}" class="detail">Detail</a>
             <a href="#/indicators/{{indicator.id}}/edit" class="edit">Edit</a>
-            <a ng-confirm-link="Are you sure?" class="destroy">Destroy</a>
+            <a ng-click="delete(indicator)" confirm-click="Are you sure?" class="destroy">Destroy</a>
         </td>
     </tr>
     </tbody>

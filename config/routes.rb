@@ -23,6 +23,7 @@ ProjectWealth::Application.routes.draw do
 
   namespace :api do
     resources :indicators
+    resources :categories
   end
 
 end

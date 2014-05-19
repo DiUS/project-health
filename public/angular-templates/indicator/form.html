@@ -21,11 +21,9 @@
 
     <div class="field">
         <label for="indicator_category_id">Category</label>
-        <select id="indicator_category_id" ng-model="indicator.category_id" name="indicator[category_id]">
+        <select id="indicator_category_id" ng-model="indicator.category_id" ng-options="category.id as category.name for category in categories" name="indicator[category_id]">
             <option value=""></option>
-            <option value="1">Technical</option>
-            <option value="2">Process</option>
-            <option value="3">Team</option></select>
+        </select>
     </div>
 
     <div class="field">

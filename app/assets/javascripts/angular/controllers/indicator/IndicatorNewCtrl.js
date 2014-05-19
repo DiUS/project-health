@@ -1,5 +1,6 @@
-projectHealthApp.controller('IndicatorNewCtrl', ['$scope', '$location', '$routeParams', 'IndicatorFactory', function($scope, $location, $routeParams, IndicatorFactory) {
+projectHealthApp.controller('IndicatorNewCtrl', ['$scope', '$location', '$routeParams', 'IndicatorFactory', 'CategoryFactory', function($scope, $location, $routeParams, IndicatorFactory, CategoryFactory) {
     $scope.indicator = {};
+    $scope.categories = CategoryFactory.query();
 
     $scope.save = function() {
         IndicatorFactory.create($scope.indicator, function () {

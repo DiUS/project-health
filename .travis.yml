@@ -2,9 +2,9 @@ language: ruby
 rvm:
 - 2.0.0
 deploy:
-  - provider: heroku
-    api_key:
-      secure: NWYu0M7rvxm7PbYIdhH3yH2k145jeG5O76igHejwJwmEisdmZb8w7xcuSMswkNOdcDNHAPpcYSS264Wse1veM6uvadH3337E98FiWoQgCSRs/rLT2g2dqAK1n1R0f+RBYgn5xf0frDevVYaq7NwIa7MR6T1lGdFVAcwhzxxRTXE=
-    app: dius-project-health
-    on:
-      repo: DiUS/project-health
+  provider: heroku
+  api_key:
+    secure: MhPSbeYg/kDD0UgaogReaEkUrF1xmT8YKHS7mi8LBq0XAF0VGsfGESnH2OnAha8lOEmp8wXDjtGDBjK6Jrs/bby+fSyqRLFEmKsfvfmlkak3MUfrX9h0FdcrQ88oOQNe2WY5A2BTcvcCb/fI2kcJm6HZvzo1gk1e3Ee7pAX+6RI=
+  app: dius-project-health
+  on:
+    repo: DiUS/project-health

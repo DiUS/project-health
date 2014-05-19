@@ -19,6 +19,7 @@ describe("IndicatorEditCtrl", function() {
     }));
     beforeEach(function() {
         $httpBackend.expectGET('/api/indicators/1.json').respond(200, indicatorFixture.indicator.id1)
+        $httpBackend.whenGET('/api/categories.json').respond(200, [categoryFixture.id1, categoryFixture.id2])
     });
 
 
